@@ -243,8 +243,8 @@ C++ class or to you it looks like a Python class 
 when you are using ROOT from Python and the name
 
 0:07:36.000,0:07:43.440
-of these classes always starts with a T that's 
-that's our convention in ROOT then you have h for
+of these classes always starts with a T. That's 
+that's our convention in ROOT then you have H for
 
 0:07:43.440,0:07:51.680
 histogram then you have the number of dimensions 
@@ -399,7 +399,7 @@ functions as well in in the ROOT world and
 
 0:12:26.320,0:12:33.440
 um we do this with yet another class So this 
-time it's called TF for T function and then
+time it's called TF for TFunction and then
 
 0:12:33.440,0:12:40.160
 you have the number of dimensions right after So 
@@ -591,15 +591,15 @@ that So we have now defined this fit function and
 
 0:18:40.080,0:18:50.960
 um to do the fit all that you need to do is you 
-need to call t th1 so the histogram fit So here
+need to call TF1 so the histogram. fit So here
 
 0:18:50.960,0:18:57.440
-the th1 is our is called h that was the one from 
+the TF1 is our is called h that was the one from 
 the beginning and then we call the fit method on
 
 0:18:57.440,0:19:07.280
 it and you pass the fit function that should be a 
-th1 object sorry a tf1 object in that case and um
+TF1 object sorry a TF1 object in that case and um
 
 0:19:07.280,0:19:13.120
 and then you can also give some options to the fit 
@@ -807,7 +807,7 @@ in this case the tragraph doesn't even take a
 
 0:25:04.960,0:25:11.040
 name or a title as a constructor argument um in 
-this case we are just fitting the t graph with a
+this case we are just fitting the TGraph with a
 
 0:25:11.040,0:25:21.520
 set of points from a parabola So here we have um 
@@ -1099,7 +1099,7 @@ consider like in a prior that your efficiency is
 
 0:34:12.960,0:34:20.320
 between zero and one and that's quite complicated 
-and this T efficiency class takes care of it for
+and this TEfficiency class takes care of it for
 
 0:34:20.320,0:34:25.520
 you That's really the message here so that 
@@ -1305,12 +1305,12 @@ it to finish importing There we are And now the 
 but we want to write some results to to a new file
 
 0:40:19.040,0:40:28.000
-or um well see how it works So to create a T file 
+or um well see how it works So to create a TFile 
 um kind of similar to what you saw with uh TF1 and
 
 0:40:28.000,0:40:35.280
 uh and all kinds of of uh ROOT functions really 
-you just create a file by calling ROOT t file
+you just create a file by calling ROOT TFile
 
 0:40:35.280,0:40:41.360
 and it takes two two arguments The first one 
@@ -1381,7 +1381,7 @@ then you have like the file name whatever Yeah I 
 see a couple of hands Good Uh we can do exactly
 
 0:42:16.240,0:42:22.320
-the same thing here So we have with ROOT t file 
+the same thing here So we have with ROOT TFile 
 and then exactly the same constructor as my my
 
 0:42:22.320,0:42:27.360
@@ -1413,7 +1413,7 @@ through um how you can write actually uh an object 
 uh inside of the file So we have our contact man
 
 0:43:14.880,0:43:21.440
-context manager We create a t file This time we 
+context manager We create a TFile This time we 
 call it f Um we create a histogram similar to
 
 0:43:21.440,0:43:27.360
@@ -1646,13 +1646,13 @@ it in the repository as well If we call ROOT ls on
 
 0:49:36.640,0:49:42.480
 this example file you'll see that we will have a 
-a t tree called data set and we can interact with
+a TTree called data set and we can interact with
 
 0:49:42.480,0:49:46.560
 [Music]
 
 0:49:46.560,0:49:56.240
-this We now know that we have a t file with my 
+this We now know that we have a TFile with my 
 data set um and we want to be able to actually
 
 0:49:56.240,0:50:03.280
@@ -1664,7 +1664,7 @@ data frame and here is also where I kind of will 
 contradict what what J said in the beginning that
 
 0:50:08.880,0:50:13.920
-every ROOT class is prepended with a t This is 
+every ROOT class is prepended with a T. This is 
 actually not fully true because the modern classes
 
 0:50:13.920,0:50:20.240
@@ -1673,7 +1673,7 @@ with an R which also logically maybe makes more
 
 0:50:20.240,0:50:26.240
 sense So if you have the choice between using an 
-R interface or a T interface I would recommend
+RInterface or a TInterface I would recommend
 
 0:50:26.240,0:50:32.080
 using the interface that starts with an R because 
@@ -2148,7 +2148,7 @@ a we should get the normal distribution And now we 
 can just use the %%jsroot command Now we can just
 
 1:02:53.120,1:03:00.480
-um do the drawing So the ROOT t canvas and 
+um do the drawing So the ROOT TCanvas and 
 we draw the histograms and then we draw the
 
 1:03:00.480,1:03:16.960
