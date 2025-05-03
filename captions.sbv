@@ -1,0 +1,3386 @@
+0:00:18.138,0:00:23.600
+[Music] what is root well for for me it's 
+always important to emphasize that it's a it's
+
+0:00:23.600,0:00:30.080
+an open-source project by the high energy physics 
+community for the community here uh the developers
+
+0:00:30.080,0:00:37.120
+are right at CERN or at our partner institute and 
+um we are engaging with our user community on a
+
+0:00:37.120,0:00:44.160
+daily basis So um if you have any questions about 
+root and how to use it in particular for your pro
+
+0:00:44.160,0:00:51.520
+problem we also have a forum where you can ask 
+your questions So it's um it's really it's really
+
+0:00:51.520,0:00:58.480
+a a community effort and um at some point who 
+knows maybe you might contribute yourself Root
+
+0:00:58.480,0:01:06.000
+was mainly developed really to drive the analysis 
+at the LHC So that was started in the 90s when the
+
+0:01:06.000,0:01:13.440
+LHC was really planned I think also root started 
+around that time maybe late 90s And uh of course
+
+0:01:13.440,0:01:20.720
+the example that we're most proud of that we 
+show every time is uh um the analysis that led
+
+0:01:20.720,0:01:26.400
+to the Hicks discovery in 2012 they were already 
+done using root So for the root was used for the
+
+0:01:26.400,0:01:32.640
+plotting um the statistical analysis and of course 
+also for storing the data and and processing the
+
+0:01:32.640,0:01:42.960
+data So I think this is quite familiar to you 
+maybe I who has seen this plot already Okay Yeah
+
+0:01:42.960,0:01:49.200
+already a few So I think then after your summer 
+student lectures everyone will know it This is the
+
+0:01:49.200,0:01:58.640
+um the measurement of hick boson decay decaying 
+into two photons and by the CMS experiment And
+
+0:01:58.640,0:02:06.720
+here you have um the measurement of the hicks mass 
+and and signal strength in both dioton and for
+
+0:02:06.720,0:02:13.920
+leptton channels by atlas So um yeah I mentioned 
+that there are several things that root can do
+
+0:02:13.920,0:02:20.400
+like plotting histograms here on this slide I 
+just give you an overview of um what it can do So
+
+0:02:20.400,0:02:26.800
+not everything is relevant for today Today we will 
+mostly focus really on the basics that you need to
+
+0:02:26.800,0:02:33.120
+get started doing some analysis in with root right 
+So let's say your supervisor gives you a root file
+
+0:02:33.120,0:02:39.760
+with some end to so some data set that he wants 
+you to analyze by the end of today the goal is
+
+0:02:39.760,0:02:46.800
+that you are able to do this with the cutting edge 
+classes of root But in case you wonder what root
+
+0:02:46.800,0:02:53.840
+can do besides um like the final analysis steps 
+here's the the overview And um some things we
+
+0:02:53.840,0:03:00.480
+are proud of in particular is uh for example 
+the C++ inter interpreter is quite powerful
+
+0:03:00.480,0:03:07.760
+So root started as um um is actually not a Python 
+library So it's a C++ library All of these parts
+
+0:03:07.760,0:03:15.120
+of root are implemented in C++ for performance 
+reasons And um all of this C++ interpretation
+
+0:03:15.120,0:03:21.920
+layer that allows us to also use it from Python 
+is quite um quite impressive Then um we have
+
+0:03:21.920,0:03:27.520
+besides functions for data storing and analysis 
+and plotting we also have some advanced libraries
+
+0:03:27.520,0:03:32.880
+for statistical analysis is roofit You might have 
+heard about it if you are already working with
+
+0:03:32.880,0:03:42.320
+these uh collaborations or for machine learning 
+we have TMVA and um then our newest uh product
+
+0:03:42.320,0:03:48.960
+so to speak is our data frame that we use then for 
+declaring your analysis and running it efficiently
+
+0:03:48.960,0:03:57.600
+and um so I was mentioning there's a lot of data 
+stored in root files Yeah So root is is used to
+
+0:03:57.600,0:04:03.520
+store data like the one the data that was recorded 
+by the experiments to discover the hick boson And
+
+0:04:03.520,0:04:10.320
+actually the impressive thing about roots data 
+storage system is that you can dump arbitrary
+
+0:04:10.320,0:04:17.680
+C++ classes in a root file and store whatever you 
+want like this And the experiments at the LHC they
+
+0:04:17.680,0:04:25.120
+they use this to really store the output of their 
+detectors at every stage of the analysis pipeline
+
+0:04:25.120,0:04:32.240
+So they have their own custom classes to represent 
+hits in the detector Then they save it into some
+
+0:04:32.240,0:04:38.160
+raw format That's how they usually call it 
+in jargon Then after they reconstruct their
+
+0:04:38.160,0:04:44.960
+particles that the detector measures they save 
+like a list of um of laptons jets etc again back
+
+0:04:44.960,0:04:53.440
+in a in a new root file And then so there are 
+between one and n further reduction steps But
+
+0:04:53.440,0:05:00.400
+at some point um you have reduced then your data 
+to some digestible format that you can also store
+
+0:05:00.400,0:05:08.640
+on your laptop and then do analysis with this Yeah 
+So we will come um um to back the to we will come
+
+0:05:08.640,0:05:14.080
+back to this again later when talking about our 
+data frame because our data frame and everything
+
+0:05:14.080,0:05:20.800
+else that we show today is really targeted 
+towards this um uh final step of the analysis
+
+0:05:20.800,0:05:27.200
+where you have your uh root files with some 
+tabular data and then you make plots out of it
+
+0:05:27.760,0:05:36.560
+Today we will talk really about these uh final 
+end user data analysis starting with histogramming
+
+0:05:36.560,0:05:42.080
+fitting So fitting is a bit of a jargon for 
+a parameter estimation in high energy physics
+
+0:05:42.080,0:05:47.680
+meaning we want to find we have some hypothesis 
+that depends on on parameters and we want to
+
+0:05:47.680,0:05:52.720
+figure out what are the ones that might match 
+the data best Then we talk about how you read
+
+0:05:52.720,0:06:00.640
+data from from root files and then how you do a 
+more complicated analysis with our data frame and
+
+0:06:00.640,0:06:15.280
+uh let's go to the Jupyter notebooks [Music] Now 
+let's uh let's get started with by looking at
+
+0:06:15.280,0:06:23.760
+histograms So histograms is a very uh a histogram 
+is a very powerful tool to reduce data right so
+
+0:06:23.760,0:06:27.280
+that's why we use it in high energy physics 
+all the time when you have measured millions
+
+0:06:27.280,0:06:33.760
+of events you don't always care about um all the 
+individual measurements you want to aggregate them
+
+0:06:33.760,0:06:39.440
+in in in some bins you know you want to know how 
+much measurements were between in this case here
+
+0:06:39.440,0:06:47.360
+for example 80 and 84 4 GV or something and um 
+so you you just need some counts in the different
+
+0:06:47.360,0:06:56.480
+ranges or called bins also called bins and then do 
+some um statistic analysis with these bin counts
+
+0:06:56.480,0:07:06.320
+So um and actually this example of a histogram 
+here is again from this hick discovery analysis
+
+0:07:06.320,0:07:12.560
+this time uh from no it's not the hick discovery 
+analysis it's later yeah you see this here square
+
+0:07:12.560,0:07:20.320
+root of s3 TV so this is from the LHC uh run two 
+but nevertheless same kind of analysis so the
+
+0:07:20.320,0:07:29.520
+hicks decaying into four laptops and um all the 
+histogram programs in root are represented by a
+
+0:07:29.520,0:07:36.000
+C++ class or to you it looks like a Python class 
+when you are using root from Python and the name
+
+0:07:36.000,0:07:43.440
+of these classes always starts with a t that's 
+that's our convention in root then you have h for
+
+0:07:43.440,0:07:51.680
+histogram then you have the number of dimensions 
+in the histogram so here one and then you have a
+
+0:07:51.680,0:07:58.880
+data type uh for the for the axis of the histogram 
+So in this case it's a one-dimensional histogram
+
+0:07:58.880,0:08:08.000
+where the access type is of type double So um like 
+a real number right represented by a computer And
+
+0:08:08.000,0:08:13.760
+um another example would be TH2I So two 
+dimensional histogram uh for integer
+
+0:08:13.760,0:08:21.760
+observables So um now we actually run some code
+
+0:08:21.760,0:08:27.520
+So let's see how you would create a histogram in 
+root and fill it with some toy data So first you
+
+0:08:27.520,0:08:34.560
+need to import root Is it maybe I can zoom in a 
+little bit Can everyone read it also in the back
+
+0:08:34.560,0:08:42.640
+is it large enough okay Nice Thanks So uh let's 
+let's import root and create our first histogram
+
+0:08:42.640,0:08:50.480
+So I will go uh through this constructor call 
+here um a little bit in in detail but then
+
+0:08:50.480,0:08:56.000
+afterwards the pattern is always the same Yeah 
+Many root objects uh in their constructor they
+
+0:08:56.000,0:09:02.480
+accept first the name of the object that should 
+be unique because root is using this internally to
+
+0:09:02.480,0:09:09.360
+um identify the object Then you have a title 
+that is used mostly for visualization And uh
+
+0:09:09.360,0:09:17.600
+then for the histogram you need to give the number 
+of bins and the range So and then the final step
+
+0:09:17.600,0:09:26.320
+here is we are sampling 5,000 random values from 
+a gshian distribution and fill the histogram with
+
+0:09:26.320,0:09:40.320
+it So that takes some time because it's 5,000 data 
+points not just uh it's actually the the um the
+
+0:09:40.320,0:09:47.040
+import that takes some time in the beginning but 
+then creating the histogram is rather fast and
+
+0:09:47.040,0:09:54.240
+uh if you want to know more about how to use the 
+TH1 object you can go to our reference guide but
+
+0:09:54.240,0:10:02.560
+usually you can also reach the same page by just 
+googling TH1 uh root or sometimes it helps to say
+
+0:10:02.560,0:10:08.560
+CERN root because root is quite ambiguous So if 
+you Google th1 str root you would probably land on
+
+0:10:08.560,0:10:15.600
+the same page So um how do you draw a histogram 
+right now we didn't see anything It's just an
+
+0:10:15.600,0:10:25.120
+object that lives in on the computer but we can't 
+really see it So um to draw anything we are using
+
+0:10:25.120,0:10:33.520
+here this um JavaScript root back end So this is 
+a um an implementation of um of root plotting in
+
+0:10:33.520,0:10:38.960
+JavaScript So that means it runs natively on the 
+browser and then you can also interact with your
+
+0:10:38.960,0:10:45.040
+plots So this is what we recommend you to use 
+when you are plotting your root histograms in
+
+0:10:45.040,0:10:50.560
+the browser from a Jupyter notebook you enable 
+our JavaScript plotting back end with this
+
+0:10:50.560,0:10:59.600
+um magic command JS root and then set it to on 
+and uh and drawing always follows the same pattern
+
+0:10:59.600,0:11:10.400
+First you create a canvas uh that you draw on So 
+this is of type t canvas and um then you draw the
+
+0:11:10.400,0:11:17.680
+object on the canvas with this object.draw method 
+In this case it's the histogram.draw draw and then
+
+0:11:17.680,0:11:24.080
+finally you draw the canvas and that's it So this 
+will always be the same thing also later on for
+
+0:11:24.080,0:11:32.640
+um for graphs or other objects in root So let's 
+do it and then you have a nice visualization of
+
+0:11:32.640,0:11:39.920
+the histogram where you can also zoom Um you 
+can reset the axis by double clicking on the
+
+0:11:39.920,0:11:47.360
+surface and you can also hover with the mouse 
+over uh over the histogram and read how many
+
+0:11:47.360,0:11:52.560
+counts are there Quite useful if your supervisor 
+is looking over your shoulder and asking so how
+
+0:11:52.560,0:11:58.400
+many bins how many counts are there again in 
+this bin So this is I mean uh it seems like a
+
+0:11:58.400,0:12:04.080
+simple feature but it's quite useful to quickly 
+know how many counts you have in a given bin
+
+0:12:04.080,0:12:12.240
+um root functions So um I already mentioned it 
+before So we often compare hypothesis with data
+
+0:12:12.240,0:12:19.120
+in histograms and the hypothesis we also want to 
+represented in sort kind of probability density
+
+0:12:19.120,0:12:26.320
+function for example So we need a way to represent 
+functions as well in in the root world and
+
+0:12:26.320,0:12:33.440
+um we do this with yet another class So this 
+time it's called TF for T function and then
+
+0:12:33.440,0:12:40.160
+you have the number of dimensions right after So 
+um you don't need a data type because a function
+
+0:12:40.160,0:12:46.560
+is just a mathematical relation It doesn't store 
+any data itself So it's just TF then the number of
+
+0:12:46.560,0:12:55.520
+dimension So uh as an example let us now create 
+a two-dimensional function that represents this
+
+0:12:55.520,0:13:04.400
+sin x^2 minus y^ 2 function So um again you give 
+a name you give a title and then instead of number
+
+0:13:04.400,0:13:09.600
+of bins you where you don't need that it's a 
+function is not bins you just give the limits
+
+0:13:09.600,0:13:18.640
+for the for the axis that are required So two 
+dimensional function has two axis x and y and
+
+0:13:18.640,0:13:24.720
+then to draw it you follow the same pattern 
+again So you create a new canvas you draw the
+
+0:13:24.720,0:13:32.560
+uh object on the canvas and you can also pass some 
+uh drawing options in the string You will find
+
+0:13:32.560,0:13:39.200
+um all the options in the the reference guide 
+Here we are using this surf one object sorry
+
+0:13:39.200,0:13:46.560
+um option to draw a surface plot in like the style 
+number one I think if you use surface two it will
+
+0:13:46.560,0:13:55.040
+look different So um in this case we get here 
+this surface plot that we can again interact with
+
+0:13:55.040,0:14:03.360
+because it's JavaScript root So uh you can really 
+look at this function from all angles Actually I'm
+
+0:14:03.360,0:14:09.120
+curious now how how surface two would look like 
+It's a slightly different way of representing the
+
+0:14:09.120,0:14:18.000
+surface apparently Nice Okay So um how do we now 
+bring the functions and the histograms together
+
+0:14:18.000,0:14:27.040
+in a likelihood fit or um or a kai square fit well 
+um let's try to fit our histogram from before the
+
+0:14:27.040,0:14:34.880
+one with a with a gosh and random numbers Um so 
+for this we need to create a new one-dimensional
+
+0:14:34.880,0:14:43.360
+function a TF1 And uh now this is really the most 
+complicated part of this presentation So so bear
+
+0:14:43.360,0:14:53.360
+with me here I use a slightly more advanced um 
+uh feature in root to define this TF1 object So
+
+0:14:53.360,0:14:59.760
+what I want to do now is um I want to define the 
+function in C++ Let's say you have a complicated
+
+0:14:59.760,0:15:06.960
+fitting function that you don't want to define in 
+Python but in C++ for performance reasons Then you
+
+0:15:06.960,0:15:15.280
+can um actually write C++ in a Jupyter notebook 
+with root by just prefixing the sale using this
+
+0:15:15.280,0:15:23.520
+percent CPP magic at the beginning of the cell 
+So all the content of the cell thereafter is
+
+0:15:23.520,0:15:30.560
+then sent to root's internal C++ interpreter 
+and then you have uh this function available
+
+0:15:30.560,0:15:36.880
+in the root module as if it would have been 
+part of root itself So this quite powerful and
+
+0:15:36.880,0:15:45.360
+uh it really allows you to to benefit from the 
+upsides of both C++ and Python in one script So
+
+0:15:45.360,0:15:53.200
+um yeah I really like to show this and here we are 
+defining this gshian function here that depends on
+
+0:15:53.200,0:15:58.160
+uh some observables x So you can think of 
+this as the observable on the x-axis of the
+
+0:15:58.160,0:16:06.320
+histogram It's only one dimensional So we are 
+only um getting the zero element of this array
+
+0:16:06.320,0:16:14.720
+and then this gshion is also depending on some 
+parameters in this uh array par And here we have
+
+0:16:14.720,0:16:24.560
+uh two parameters One overall scaling constant 
+here R0 and then the mean R1 And you see that this
+
+0:16:24.560,0:16:30.000
+gshion here is always has a standard deviation 
+of one So it's a bit of a simplified version
+
+0:16:30.000,0:16:40.640
+of the gshion So just a gshion with the floating 
+mean and and normalization So we define this Now
+
+0:16:40.640,0:16:49.040
+in the definition of the parameters I see that you 
+are indexing par and x as if there were arrays but
+
+0:16:49.040,0:16:56.400
+then in the in the typing you uh it says only 
+double as if it's not an array So I'm a little
+
+0:16:56.400,0:17:06.240
+bit confused Do we see this star here maybe so 
+this is um how you declare arrays in C actually So
+
+0:17:06.240,0:17:13.040
+um yes it if it would be just double x that 
+would mean this function accepts a double but
+
+0:17:13.040,0:17:19.200
+um but if you have this double star x it 
+means it accepts an array of double of
+
+0:17:19.200,0:17:28.000
+um so the length is not clear but um it's 
+just a basically a pointer to the a place
+
+0:17:28.000,0:17:33.360
+in memory where this array starts and this 
+is how you are um passing around arrays in
+
+0:17:33.360,0:17:38.640
+in C++ as well So it's like a something 
+that the language inherited from from
+
+0:17:38.640,0:17:52.080
+C and um now we can use it as if it would be part 
+of the root module So we use it thish in this case
+
+0:17:52.080,0:18:00.080
+to instantiate this TF1 function object Um because 
+what I've shown you before with the TF2 example
+
+0:18:00.080,0:18:05.840
+was we are giving the mathematical expression for 
+the function as a string Let's throw in the second
+
+0:18:05.840,0:18:15.440
+constructor argument Um this time we're passing 
+it passing the a C++ function that is basically
+
+0:18:15.440,0:18:24.400
+wrapped by this root function object So let's do 
+this And we get our own C++ function here from
+
+0:18:24.400,0:18:31.040
+the root module So everything that we declared to 
+the root interpreter with this percent CP magic
+
+0:18:31.040,0:18:40.080
+you can then get it from the uh from root like 
+that So we have now defined this fit function and
+
+0:18:40.080,0:18:50.960
+um to do the fit all that you need to do is you 
+need to call t th1 so the histogram fit So here
+
+0:18:50.960,0:18:57.440
+the th1 is our is called h that was the one from 
+the beginning and then we call the fit method on
+
+0:18:57.440,0:19:07.280
+it and you pass the fit function that should be a 
+th1 object sorry a tf1 object in that case and um
+
+0:19:07.280,0:19:13.120
+and then you can also give some options to the fit 
+just like in the in the case of drawing So there
+
+0:19:13.120,0:19:19.120
+you pass some drawing object uh drawing options 
+Here you're passing fitting options We only use
+
+0:19:19.120,0:19:25.760
+one We are using this S option here So that the 
+fit um function actually returns an object with
+
+0:19:25.760,0:19:31.920
+a fit result So S stands for save in this case 
+Actually it means save the result of the of the
+
+0:19:31.920,0:19:40.400
+fit in this returned value here Rest for result So 
+it does that and it also prints you the fit result
+
+0:19:40.400,0:19:49.760
+on the screen actual parameter values You see them 
+here in the very bottom So P 0 and P1 um or P1
+
+0:19:49.760,0:19:56.720
+This was the mean right we sampled the the random 
+values from a gshian distribution with mean zero
+
+0:19:56.720,0:20:03.200
+So if the fit value is more or less compatible 
+with zero that makes sense So it is this is
+
+0:20:03.200,0:20:11.360
+the case So it's almost zero within one standard 
+deviation So that's that's okay And then the and
+
+0:20:11.360,0:20:17.920
+then the normalization constant well it's um it's 
+not exactly the number of events in the toy data
+
+0:20:17.920,0:20:24.160
+set because uh in the definition of the gshion we 
+didn't really care about the the about normalizing
+
+0:20:24.160,0:20:29.920
+the PDF or any bin width or whatever So that 
+means this con constant here is a bit bit random
+
+0:20:30.640,0:20:39.440
+But um it is um uh you can see it here it's 500 
+And then you have some other information like
+
+0:20:39.440,0:20:46.560
+how many um iterations did the minimizer need to 
+find the minimum How far does it estimate it is
+
+0:20:46.560,0:20:52.240
+away from the minimum This is this EDM estimated 
+distance from the minimum That's a bit technical
+
+0:20:52.240,0:20:59.360
+but what you maybe know from the from your physics 
+classes is this um kaiquare quantity So you see it
+
+0:20:59.360,0:21:07.840
+here again in the fit results and when you draw 
+now the histogram after doing this fit So again
+
+0:21:07.840,0:21:15.360
+the same way create canvas draw the histogram um 
+draw the canvas you see that the um fit function
+
+0:21:15.360,0:21:21.680
+is included in the visualization And when you now 
+hover with the mouse over the histogram you will
+
+0:21:21.680,0:21:28.400
+see not only the bin counts but also the value of 
+the function So you can really compare things by
+
+0:21:28.400,0:21:34.640
+eye which is sometimes quite useful You don't 
+you don't always want to rely on kiquare test
+
+0:21:34.640,0:21:41.600
+statistics or something Sometimes this can deceive 
+you It's always good to compare things by eye
+
+0:21:41.600,0:21:50.160
+Remember it was a bit of a bit of a complicated 
+way in which we were defining this gshian function
+
+0:21:50.160,0:22:01.280
+Right we were creating our own C++ function 
+to define the this gshian TF1 but I mean since
+
+0:22:01.280,0:22:08.080
+gshian distribution is so common in data analysis 
+there's also builtin function in root it's called
+
+0:22:08.080,0:22:13.680
+gaus and then you can just fit your histogram to 
+this built-in function which is by the way this
+
+0:22:13.680,0:22:22.560
+uh the same function that we use to to fill the 
+random numbers So um you can think of it uh like
+
+0:22:22.560,0:22:29.120
+there are some TF1 objects that always live in in 
+the root module no matter if you created them or
+
+0:22:29.120,0:22:36.560
+not and you can reference them by um using these 
+uh names in a string So for the full list of the
+
+0:22:36.560,0:22:41.120
+supported built-in functions you can follow this 
+link but here we're using the gshion and we get
+
+0:22:41.120,0:22:48.560
+the same result as before at least for um for 
+the mean for the constant we now get something
+
+0:22:48.560,0:22:54.880
+else because it's um the normalization is is 
+a bit different in the in the built-in gshion
+
+0:22:54.880,0:22:59.600
+and then we also have now an estimate for the 
+standard deviation which is compatible with one
+
+0:22:59.600,0:23:07.200
+So that that matches again the um the gshion with 
+mean zero and standard deviation one that we used
+
+0:23:07.200,0:23:18.320
+to fill the the histogram with So we now draw 
+the histogram You see here the same result as
+
+0:23:18.320,0:23:25.120
+before because now we just use the built-in gshion 
+instead of our custom one But of course the end
+
+0:23:25.120,0:23:32.400
+result is the same uh once your fit becomes more 
+complicated like in the case of these LHC hick
+
+0:23:32.400,0:23:38.400
+combination analysis yeah then you don't only 
+fit one histogram at a time then you start to
+
+0:23:38.400,0:23:44.720
+fit like 50 or even 100 histograms because then 
+each analysis group they measure their own decay
+
+0:23:44.720,0:23:51.440
+channel or their own observable and then you want 
+to do some combined measurement where you are then
+
+0:23:51.440,0:23:58.400
+um uh fitting all these histograms with a common 
+hypothesis that has like a a global hypothesis
+
+0:23:58.400,0:24:05.520
+on the on the hick mass for example So you start 
+to have a very large likelihood function and to
+
+0:24:05.520,0:24:09.920
+actually find the minimum you need to take care 
+that this likelihood function is implemented in
+
+0:24:09.920,0:24:17.120
+a very efficient way so that the minimizer can 
+evaluate it very very often And um we have a
+
+0:24:17.120,0:24:24.080
+library inside root that you can use to implement 
+these very efficient probability density functions
+
+0:24:24.080,0:24:29.760
+and likelihoods It's called RFIT you will maybe 
+use it when you are working with CMS or Atlas or
+
+0:24:29.760,0:24:37.920
+any of the big LHC experiments in in your time 
+as a summer student Okay we can also visualize
+
+0:24:37.920,0:24:44.160
+graphs in root not surprisingly and this is quite 
+a common thing to do So just a set of points on
+
+0:24:44.160,0:24:50.880
+the x and y axis and the class that allows 
+you to do that is is called the tg graph and
+
+0:24:50.880,0:24:57.200
+um I just give you one example how to use it 
+so that you have it seen have seen it at least
+
+0:24:57.200,0:25:04.960
+once but it's it's quite intuitive right so um 
+in this case the tragraph doesn't even take a
+
+0:25:04.960,0:25:11.040
+name or a title as a constructor argument um in 
+this case we are just fitting the t graph with a
+
+0:25:11.040,0:25:21.520
+set of points from a parabola So here we have um 
+so in a in this loop between 20 and minus 20 and
+
+0:25:21.520,0:25:29.280
+21 So actually that means from minus 20 to 20 
+inclusive we are filling the points the graph
+
+0:25:29.280,0:25:37.680
+with x and minus x^2 And then to draw the um the 
+graph you can do the same thing In this example
+
+0:25:37.680,0:25:44.800
+we're actually using some member functions of the 
+graph to define the style So here the marker style
+
+0:25:44.800,0:25:52.160
+the the color of the line when you draw it and 
+and the title It looks like this in the end It's
+
+0:25:52.160,0:25:59.520
+uh not uh not not very surprising So you see here 
+these um um points on the parabola that we were
+
+0:25:59.520,0:26:06.480
+filling the graph with And um again since it's 
+JavaScript root you can hover over the points
+
+0:26:06.480,0:26:13.040
+and see their x and y values So just to show 
+you an example for different drawing options
+
+0:26:13.040,0:26:20.960
+So here is another one If you draw a graph on a 
+canvas with this tgraphd draw you can also say hey
+
+0:26:20.960,0:26:27.840
+um draw it in this uh bar plot style So that's 
+what the B stands for The A stands for redraw the
+
+0:26:27.840,0:26:34.800
+axis Well this is by the way I think the default 
+behavior anyway And then um and then the B stands
+
+0:26:34.800,0:26:42.320
+for bar plot and again one is just the first kind 
+of bar plot style that root has built in And then
+
+0:26:42.320,0:26:50.400
+you have a bar plot instead of a regular u um 
+plot scatter plot with points connected by a line
+
+0:26:51.360,0:26:58.640
+So um these were some basic plotting examples 
+but what I really like to show you now is some uh
+
+0:26:58.640,0:27:04.960
+examples for plots of plots that are very common 
+in high energy physics and sometimes difficult to
+
+0:27:04.960,0:27:14.480
+implement with other tools Yeah like um here we 
+see here this uh histogram stack for example you
+
+0:27:14.480,0:27:22.240
+have here um some points with the observed data 
+here in black but what the hicks analysis here
+
+0:27:22.240,0:27:28.560
+in the for leptton channel did is they didn't 
+compare the data to some um to some function
+
+0:27:28.560,0:27:35.760
+like we did with our TF1 toy analysis but you were 
+actually comparing the data to a simulation so to
+
+0:27:35.760,0:27:42.800
+simulate ated data that is then also represented 
+in a histogram And uh to visual visually disting
+
+0:27:42.800,0:27:50.720
+distinguish them we are often representing the 
+actual data in these um black dots with arrow bars
+
+0:27:50.720,0:27:58.160
+and then the predictions So the simulated data for 
+a given hickmass hypothesis in this example we are
+
+0:27:58.160,0:28:06.880
+um representing this in the shaded areas So these 
+are also histograms Yeah TH1s the blue one here
+
+0:28:06.880,0:28:13.760
+for this um dibbon background and the red one 
+for the hick boson signal So these are then also
+
+0:28:13.760,0:28:21.040
+histograms filled with Monte Carlo predictions and 
+you see that you have different um components of
+
+0:28:21.040,0:28:29.360
+this Monte Carlo predictions So you have this um 
+uh the signal component here in red the background
+
+0:28:29.360,0:28:36.000
+dioon background in blue and then some other 
+backgrounds in in purple And you want to stack
+
+0:28:36.000,0:28:44.320
+these on top of each other in your in your canvas 
+to represent the full expectation um in your for
+
+0:28:44.320,0:28:53.040
+this measurement We have a class in roof It's 
+called the TH stack and um you create a TH
+
+0:28:53.040,0:29:00.080
+stack from a list of histograms and then when you 
+draw the histogram stack so if you call TH stack
+
+0:29:00.080,0:29:08.080
+drawdraw it will um give you something that looks 
+very similar already to this kind of plots that I
+
+0:29:08.080,0:29:14.560
+showed you in the beginning with the data to Monte 
+Carlo comparisons So what we are doing here is
+
+0:29:14.560,0:29:23.280
+um we are creating an array of actually three 
+TH1Ds Yeah one-dimensional histograms Then uh
+
+0:29:23.280,0:29:33.040
+okay we set some title here for and we create this 
+TH stack object here and then in a loop we are
+
+0:29:33.040,0:29:41.600
+um filling these individual histograms with random 
+numbers So in between these random number filling
+
+0:29:41.600,0:29:47.200
+I'm changing the the mean of the of the gshion of 
+this function that I sample from just so that the
+
+0:29:47.200,0:29:53.200
+three histograms are not the same right and then 
+um also the color is is different for the three
+
+0:29:53.200,0:30:00.560
+histograms and then um the histogram is added to 
+this stack and in the end we draw the stack and
+
+0:30:00.560,0:30:09.040
+that's what you see then here in in the output of 
+the cell and when you hover over the uh bins Again
+
+0:30:09.040,0:30:14.880
+you see actually the bin counts for each histogram 
+in the stack as if you would have drawn them
+
+0:30:14.880,0:30:23.360
+individually So another example for for a high 
+energy physics specific use case is here uh these
+
+0:30:23.360,0:30:33.440
+efficiency curves So um this is maybe requires 
+some explanation So what do we mean by efficiency
+
+0:30:33.440,0:30:41.600
+curve so often you have uh an analysis where you 
+are doing some filtering So let's say you have um
+
+0:30:41.600,0:30:50.320
+um a mass spectrum of a of um of some um yeah four 
+leptton resonance like we use in the in the six
+
+0:30:50.320,0:30:56.240
+analysis that I just showed And you want to filter 
+some your your events according to some criteria
+
+0:30:56.240,0:31:03.520
+like um events that that only have well identified 
+lepttons or some or events with a certain
+
+0:31:03.520,0:31:13.760
+um um mass range So then um you want to see okay 
+how many events are in my histogram before and
+
+0:31:13.760,0:31:19.760
+after the filter so that you can compare okay 
+how much of the signal survived the filters how
+
+0:31:19.760,0:31:26.080
+much of the background is still left to do these 
+kind of studies So um yeah filtering is very very
+
+0:31:26.080,0:31:34.240
+much essential for high energy physics u analysis 
+and by filter efficiency I just mean the rate of
+
+0:31:34.240,0:31:40.560
+events that survive the filter So often when you 
+do an analysis you want to find filters where 100%
+
+0:31:40.560,0:31:48.400
+of the signal events survive and fortunately 0% 
+background events but that's uh usually never the
+
+0:31:48.400,0:31:53.840
+case So you have to make a compromise and for this 
+reason it's important to study these filtering
+
+0:31:53.840,0:32:01.040
+efficiencies Um so I show you here an example 
+on on how you could do that Let's say you have
+
+0:32:01.040,0:32:10.480
+uh two histograms One events one histogram with 
+um um uh with the events before the filtering and
+
+0:32:10.480,0:32:18.640
+one right after So this age pass for the passing 
+events and then total for the the total events
+
+0:32:18.640,0:32:27.040
+before the filtering So in in this example I 
+I just set up random gshion data sets again So
+
+0:32:27.040,0:32:35.200
+um let me just plot them It's easier to talk 
+about it then So here I I uh for both the passing
+
+0:32:35.200,0:32:40.320
+histogram in red and the total histogram in blue 
+I just sample them from a gshian distribution
+
+0:32:40.320,0:32:46.640
+So but let's pretend this is really uh you got to 
+do this histogram by doing some proper uh analysis
+
+0:32:46.640,0:32:54.640
+of of a selection right and um then you want to 
+know what are the filtering efficiencies in each
+
+0:32:54.640,0:33:05.360
+bin So for each bin um how much events of the blue 
+histogram are still left in the red one Um and
+
+0:33:05.360,0:33:11.040
+uh this is quite easy in general because it's 
+just you need to divide the one histogram over the
+
+0:33:11.040,0:33:17.440
+other and then you have the the ratio But um the 
+problem is when your professor then then comes and
+
+0:33:17.440,0:33:24.240
+asks you hey you told me what uh this efficiency 
+ratio here but I have no idea what the uncertainty
+
+0:33:24.240,0:33:31.120
+is and please add the error bars to your 
+efficiency plot Then um okay so what do you do you
+
+0:33:31.120,0:33:37.440
+think about your gshian error propagation that you 
+did in the physics lab and and then you realize
+
+0:33:37.440,0:33:44.000
+that you might get the wrong results with this 
+because inefficiency is by definition between zero
+
+0:33:44.000,0:33:51.360
+and one and if you do go gshian error propagation 
+then um this is not considered So you might have
+
+0:33:51.360,0:33:57.520
+error bars in the end that extend above one or 
+below zero So your professor comes back to you and
+
+0:33:57.520,0:34:04.560
+and tells you hey I don't trust in your results it 
+looks uh looks unphysical So then um you actually
+
+0:34:04.560,0:34:12.960
+have to do some Beijian error estimation where you 
+consider like in a prior that your efficiency is
+
+0:34:12.960,0:34:20.320
+between zero and one and that's quite complicated 
+and this T efficiency class takes care of it for
+
+0:34:20.320,0:34:25.520
+you That's really the message here so that 
+you don't need to uh do this complicated
+
+0:34:25.520,0:34:34.240
+error propagation yourself So um that's why 
+if you then create this t efficiency here with
+
+0:34:34.240,0:34:41.520
+um from the passing and failing histogram and 
+then draw it then you will see it automatically
+
+0:34:41.520,0:34:52.480
+comes with the arrow bars that are using this 
+correct um uncertainty estimation for efficiencies
+
+0:34:56.360,0:35:01.440
+[Music] This exercise is very sim similar 
+to what I showed you in the presentation
+
+0:35:01.440,0:35:08.160
+So you're defining a model function in 
+C++ and um and fit it to a histogram
+
+0:35:08.880,0:35:13.680
+The difference is that the histogram is not filled 
+with random numbers but this time it's filled from
+
+0:35:13.680,0:35:22.880
+a from a a Python list And the function is not a 
+a simple C++ function with only one function body
+
+0:35:22.880,0:35:30.080
+but it's actually um a function that calls two 
+other functions So we have here one for the for
+
+0:35:30.080,0:35:36.800
+the background one for for the signal peak They 
+are defined individually just before And then you
+
+0:35:36.800,0:35:47.200
+get this total fit function here And um so in 
+the end once you fit the function to the data
+
+0:35:47.200,0:35:52.400
+with the similar commands to what we saw before 
+in the lecture it should look like this So that's
+
+0:35:52.400,0:36:00.720
+the exa expected results of the the exercise You 
+have some details detail instructions here and um
+
+0:36:00.720,0:36:06.400
+the solution is also at the bottom I encourage you 
+not to look at it until you have really done this
+
+0:36:06.400,0:36:15.520
+yourself Uh let's look at the solution together 
+very quickly So um so for the fit function it's
+
+0:36:15.520,0:36:22.960
+like in this example with the custom gshion from 
+the from the lecture So you pass here the the C++
+
+0:36:22.960,0:36:32.160
+function via the root module Then you give the 
+minimum of X and Y sorry of just of X and the
+
+0:36:32.160,0:36:36.880
+number of parameters which is is four So this 
+is probably the most complicated part because
+
+0:36:36.880,0:36:42.880
+you need to infer the number of parameters from 
+reading here the function definitions So here you
+
+0:36:42.880,0:36:50.880
+know that um so here the background it uses part 
+zero one and two So that one has three already the
+
+0:36:50.880,0:37:01.040
+peak uses par zero and uh and that's it So that 
+means three plus one in total four parameter and
+
+0:37:01.040,0:37:08.160
+um and this information needs to be known by the 
+by the TF1 object so that it can internally create
+
+0:37:08.160,0:37:16.720
+the the arrays of parameters with the right size 
+Okay So then and then you fit um and then you fit
+
+0:37:16.720,0:37:25.200
+here the the the function to the histogram here 
+There's also a little gotcha that tripped me off
+
+0:37:25.200,0:37:33.200
+at some point Yeah So you get here this um error 
+message but it tells you what to do right so you
+
+0:37:33.200,0:37:45.360
+can um use this save option So that's um this 
+warning doesn't happen And then um for drawing
+
+0:37:45.360,0:37:51.840
+the new information that you needed was here 
+this E option So um capital E is the drawing
+
+0:37:51.840,0:37:58.320
+option for drawing histogram with arrow bars So 
+you might either find this in the documentation
+
+0:37:58.320,0:38:03.840
+for drawing histograms or just if you Google CERN 
+root how to draw arrow bars it will probably show
+
+0:38:03.840,0:38:10.800
+you Oh and that's a general advice ROOT is not 
+the most googleable name for a software framework
+
+0:38:10.800,0:38:21.680
+because root might also mean other things with 
+computers the super user or just the tree Um so
+
+0:38:21.680,0:38:35.420
+if you Google for something ROOT related it's 
+good to ask for CERN root So that's the advice
+
+0:38:35.420,0:38:35.440
+[Music] 2. ROOT File
+
+0:38:35.440,0:38:39.600
+The root files are really what's at the core 
+of of doing an analysis because this is where
+
+0:38:39.600,0:38:45.280
+you read the data from and potentially also where 
+you read your data or the results of your analysis
+
+0:38:45.280,0:38:52.800
+uh back to be able to reuse or to reinpret. The 
+cool thing about these root files is really that
+
+0:38:52.800,0:39:00.640
+you can write any object uh to the files Um so 
+the the a root file we refer to it as a TFile,
+
+0:39:00.640,0:39:04.080
+so again the `T` at the beginning;
+and that's really the the kind of the
+
+0:39:04.080,0:39:09.920
+object that you use to interact with when you're 
+running ROOT or when you're doing your analysis in
+
+0:39:09.920,0:39:16.160
+a in a notebook Um so the files they're kind of 
+special It's it's not like you can open them in
+
+0:39:16.160,0:39:20.640
+a text editor and see what's in there. They're 
+are binary files, and the reason behind this
+
+0:39:20.640,0:39:25.440
+is that we can apply compression and all kinds of 
+trickery to make sure that the files are as small
+
+0:39:25.440,0:39:30.400
+and as optimal as it needed to be, because well as 
+you saw we have 2 exabyte of data So we kind of have
+
+0:39:30.400,0:39:36.160
+to think about uh how we store these. You cannot 
+just write them down. We talk about ROOT files but
+
+0:39:36.160,0:39:42.080
+really what's inside of them is uh kind of like 
+a hierarchy and um if you use your terminal and
+
+0:39:42.080,0:39:46.880
+you print for example what's in a directory you 
+see that there are maybe subdirectories and files
+
+0:39:46.880,0:39:51.920
+ROOT files kind of have the same feeling where you 
+can have directories inside the root files or um
+
+0:39:51.920,0:39:59.280
+or objects um that are yeah kind of hierarchical 
+how to use and how to interact with a root file
+
+0:39:59.280,0:40:05.200
+Um let's start with just importing ROOT as usual 
+Uh this is always how we start Um let's wait for
+
+0:40:05.200,0:40:12.480
+it to finish importing There we are And now the 
+T file So in this situation we want to create a
+
+0:40:12.480,0:40:19.040
+T file from scratch So we don't have any data yet 
+but we want to write some results to to a new file
+
+0:40:19.040,0:40:28.000
+or um well see how it works So to create a T file 
+um kind of similar to what you saw with uh TF1 and
+
+0:40:28.000,0:40:35.280
+uh and all kinds of of uh root functions really 
+you just create a file by calling root t file
+
+0:40:35.280,0:40:41.360
+and it takes two two arguments The first one 
+is actually the name of your file Um and the
+
+0:40:41.360,0:40:47.760
+extension we use is root So anytime you find a 
+file that has root you know or you can be fairly
+
+0:40:47.760,0:40:54.000
+certain that it's a root file And then the second 
+parameter is kind of the mode or the option you
+
+0:40:54.000,0:41:01.200
+give to to the T file um constructor and it kind 
+of basically tells uh root or the T file creator
+
+0:41:01.200,0:41:05.200
+what you want to do with the file and it kind of 
+describes the policies on how you want to handle
+
+0:41:05.200,0:41:11.840
+the file So in this case I I said recreate which 
+means that I tell root that okay even if the file
+
+0:41:11.840,0:41:17.200
+already exists uh I don't care what's in it just 
+remove everything and let me start from scratch
+
+0:41:17.200,0:41:22.160
+This is can be a bit of a dangerous uh option 
+So if you only want to read what I recommend
+
+0:41:22.160,0:41:27.760
+or what we recommend is to not give any option 
+then it will always use the default read option
+
+0:41:27.760,0:41:33.360
+uh which means it's read only So you cannot 
+modify it Uh so yeah when you're handling data
+
+0:41:33.360,0:41:40.080
+uh that would be the recommended way of doing 
+it And then if you're done with the with with
+
+0:41:40.080,0:41:44.160
+your file if you're done writing it or reading 
+it or whatever you want to do with it you want
+
+0:41:44.160,0:41:51.840
+to close it So you can close it again uh by 
+calling f close Good to note here is that in
+
+0:41:51.840,0:41:57.920
+case your program terminates or if the the the 
+object we call f is destroyed the file is closed
+
+0:41:57.920,0:42:04.640
+automatically So in most cases you don't have to 
+um actively do this Another nice thing especially
+
+0:42:04.640,0:42:10.000
+because now we're using Python I don't know who 
+has ever opened a file in Python using the width
+
+0:42:10.000,0:42:16.240
+then you have like the file name whatever Yeah I 
+see a couple of hands Good Uh we can do exactly
+
+0:42:16.240,0:42:22.320
+the same thing here So we have with root t file 
+and then exactly the same constructor as my my
+
+0:42:22.320,0:42:27.360
+file You can do something with the file inside 
+the scope and then you will see that once you
+
+0:42:27.360,0:42:31.120
+exit the scope the file gets properly closed 
+and you don't need to worry about it Suppose
+
+0:42:31.120,0:42:37.680
+we want to get the size of the file We can 
+say my file dot or actually want to print
+
+0:42:37.680,0:42:53.680
+it file dot size and we can see that the file 
+currently has 220 bytes already u which is the
+
+0:42:53.680,0:43:02.720
+metadata that gets created when you create a t 
+file Um but there's no content yet Okay Um the
+
+0:43:02.720,0:43:08.080
+content is what we are going to do now So with the 
+following example um I kind of want to walk you
+
+0:43:08.080,0:43:14.880
+through um how you can write actually uh an object 
+uh inside of the file So we have our contact man
+
+0:43:14.880,0:43:21.440
+context manager We create a t file This time we 
+call it f Um we create a histogram similar to
+
+0:43:21.440,0:43:27.360
+what you did in the in the previous part of the 
+session um just has some but still actually an
+
+0:43:27.360,0:43:36.880
+empty histogram and we call it h and to write this 
+object h into the file we can call write object
+
+0:43:36.880,0:43:42.640
+um on the file with um where we specify the actual 
+object and then the name of the object So we say h
+
+0:43:42.640,0:43:49.200
+and age.get name because we already gave h a name 
+which is minist um and then we can call it and it
+
+0:43:49.200,0:43:54.800
+doesn't really output anything but we can check 
+actually that it's that it wrote it in bit So as
+
+0:43:54.800,0:43:59.840
+you see here the the the argument of the th1D is 
+the name of the histogram which Yan has already
+
+0:43:59.840,0:44:04.320
+explained is kind of the common pattern where you 
+g the name to the object and good to note here is
+
+0:44:04.320,0:44:09.680
+that this name is actually also what we use to 
+identify the objects in the file So even though
+
+0:44:09.680,0:44:15.600
+in our Python program we called it H If we want 
+to then read it back from file in a in a different
+
+0:44:15.600,0:44:23.040
+program um it's not called H it will be called my 
+histo Um so that's maybe a good thing to note Okay
+
+0:44:23.040,0:44:29.280
+So now we should have a file or we already saw 
+that we have a file called my file.root Um but we
+
+0:44:29.280,0:44:36.400
+want to check uh whether actually it contains the 
+objects uh that we just wrote And let's first just
+
+0:44:36.400,0:44:42.880
+try with bash Um I'm sure I hope that everyone's 
+familiar with the ls command And we can see indeed
+
+0:44:42.880,0:44:47.920
+that there is a file called my file.root It's 
+also larger than what we saw before Has more
+
+0:44:47.920,0:44:55.680
+bytes So there's something written to it Um which 
+is already a bit reassuring Um but now if we want
+
+0:44:55.680,0:45:01.600
+to actually check if it contains the histogram 
+we just created we also provide a special command
+
+0:45:01.600,0:45:07.360
+called uh root ls that will actually show you 
+the commands within a root file So if you have a
+
+0:45:07.360,0:45:13.680
+root file and you only know the file name but you 
+aren't really sure what's in there Um you can use
+
+0:45:13.680,0:45:21.520
+root ls to to inspect actually the contents of the 
+of the file So to see it in action Yeah exactly So
+
+0:45:21.520,0:45:29.040
+we call root ls with uh exactly the same command 
+uh -l with uh the file name and it shows you that
+
+0:45:29.040,0:45:36.080
+uh we have a th1D uh written on 14th of 
+June with a um histogram called my histo
+
+0:45:36.080,0:45:41.280
+and actually it also contains the type Now this 
+is all fine You have the file you know how to
+
+0:45:41.280,0:45:46.400
+show it in bash Um but of course you also want to 
+be able to interact with it Uh because you create
+
+0:45:46.400,0:45:52.800
+histogram you write it out but then you want to 
+uh fill it or maybe plot it or I don't know you
+
+0:45:52.800,0:45:59.600
+want to programmatically interact with it Um we 
+can do it again by using T file So now we open
+
+0:45:59.600,0:46:04.560
+uh again with the context manager we open the file 
+Notice that I don't give a don't give an argument
+
+0:46:04.560,0:46:08.800
+right now because I don't want to recreate I don't 
+want to update I just want to read um which will
+
+0:46:08.800,0:46:15.040
+be the default And then I can on the on the file 
+object I can call get um with again the name of
+
+0:46:15.040,0:46:22.000
+the histogram we just created So let's see what it 
+does exactly So now we open the file we get it and
+
+0:46:22.000,0:46:29.760
+um we can verify here that we have a histogram 
+called my histo which exactly what we created
+
+0:46:29.760,0:46:37.920
+So that's files in general Um now let's move a 
+bit into uh what's usually in these files which
+
+0:46:37.920,0:46:43.360
+are uh H data sets because I don't know what 
+what what your background is Um just to make
+
+0:46:43.360,0:46:49.920
+sure we're on the same page A high energy physics 
+data set uh typically contains many many um we're
+
+0:46:49.920,0:46:55.840
+talking about couple of million per profile of 
+uh statistically independent collision events
+
+0:46:55.840,0:47:01.600
+Maybe the the naive solution would be to create 
+an object with my event and then have multiple
+
+0:47:01.600,0:47:10.960
+of them uh and read them back Um however that is 
+very inefficient because every event has hundreds
+
+0:47:10.960,0:47:16.400
+to sometimes uh thousands of data fields and 
+if you need to write read back every data field
+
+0:47:16.400,0:47:24.160
+every time uh yeah you you might uh need a lot of 
+coffee breaks before your before your analysis is
+
+0:47:24.160,0:47:32.080
+finished Um so instead we thought about how we can 
+store this efficiently and um so we came up with a
+
+0:47:32.080,0:47:39.520
+data set um specification that it's columnar um 
+so a data set we organized in different columns
+
+0:47:39.520,0:47:46.880
+um and these columns can store elements of any 
+C++ type so it's fundamental types like integers
+
+0:47:46.880,0:47:54.720
+floats uh you can use collections so vectors maps 
+arrays or you can even provide your own classes
+
+0:47:54.720,0:48:02.480
+So if you have a class um my electron uh you 
+could write your yeah an object of my electron
+
+0:48:02.480,0:48:10.400
+uh into a data set and to kind of show you what 
+it looks like uh from a very very um high level
+
+0:48:10.400,0:48:18.160
+point of view Um so every the green part here is 
+is an event or an entry Um and then this entry is
+
+0:48:18.160,0:48:23.680
+split up into into columns or typically we also 
+refer to it as as branches and it can be anything
+
+0:48:23.680,0:48:30.640
+like a can be a number it can be an object um 
+and kind of a way to also think about this is
+
+0:48:30.640,0:48:39.040
+uh a high performance excel sheet so you have 
+really this tabular view on your data and this
+
+0:48:39.040,0:48:44.640
+data set we call it t tree or it's the name of 
+the of the class we uh we use it again so it's
+
+0:48:44.640,0:48:50.880
+a tree with the t in front of it Um and it 
+can be written to a T file just as any other
+
+0:48:50.880,0:49:00.240
+um C++ object or root object as we just saw Um and 
+the nice thing about this format is that you can
+
+0:49:00.240,0:49:07.680
+read columns independently which is very nice if 
+you have a massive data set of maybe a thousand
+
+0:49:07.680,0:49:12.400
+fields or branches or columns or whatever you want 
+to call it and you really only need two or three
+
+0:49:12.400,0:49:18.080
+It wouldn't make any sense to read everything 
+But with this way you can really um optimize
+
+0:49:18.080,0:49:23.760
+the IO so the reading and writing from disk uh 
+performance uh especially with with respect to
+
+0:49:23.760,0:49:30.400
+other data set formats that already exist Going to 
+show you what a T3 looks like We again used the so
+
+0:49:30.400,0:49:36.640
+now this example file already existed You can find 
+it in the repository as well If we call root ls on
+
+0:49:36.640,0:49:42.480
+this example file you'll see that we will have a 
+a t tree called data set and we can interact with
+
+0:49:42.480,0:49:46.560
+[Music]
+
+0:49:46.560,0:49:56.240
+this We now know that we have a t file with my 
+data set um and we want to be able to actually
+
+0:49:56.240,0:50:03.280
+analyze the data that's inside of it Um the 
+recommended way is um nowadays roots are
+
+0:50:03.280,0:50:08.880
+data frame and here is also where I kind of will 
+contradict what what J said in the beginning that
+
+0:50:08.880,0:50:13.920
+every root class is prepended with a t This is 
+actually not fully true because the modern classes
+
+0:50:13.920,0:50:20.240
+and and um interfaces we have will actually start 
+with an R which also logically maybe makes more
+
+0:50:20.240,0:50:26.240
+sense So if you have the choice between using an 
+R interface or a T interface I would recommend
+
+0:50:26.240,0:50:32.080
+using the interface that starts with an R because 
+it's the latest and greatest Okay So in our case
+
+0:50:32.080,0:50:38.240
+we are well now we're talking about uh roots our 
+data frame and it's really the high level analysis
+
+0:50:38.240,0:50:43.200
+interface So if you're doing physics analysis is 
+really what we recommend you to use It's very nice
+
+0:50:43.200,0:50:49.840
+to define the steps that you have to take for your 
+analysis uh the sequence of operations and then
+
+0:50:49.840,0:50:55.920
+under the hood our data frame takes care of making 
+sure that everything is optimized and runs as fast
+
+0:50:55.920,0:51:01.440
+as it uh can run So with root our data frame you 
+can provide different sources you can actually
+
+0:51:01.440,0:51:05.840
+you don't only need to read from from root files 
+it's the most common way but you can actually also
+
+0:51:05.840,0:51:12.160
+create an data frame from a CSV file or uh from a 
+numpy array which we'll see in a bit Um and then
+
+0:51:12.160,0:51:18.880
+you provide your steps So that could be a filter 
+it could be a definition of a new column Um it
+
+0:51:18.880,0:51:24.560
+could be anything And then you output it to a 
+histogram your new root files that you can use
+
+0:51:24.560,0:51:31.680
+then perform your fits or yeah really any any user 
+find user defined operation Just to summarize our
+
+0:51:31.680,0:51:36.400
+data frame really allows for writing and and 
+actually also uh sorry reading and actually
+
+0:51:36.400,0:51:43.440
+also writing uh trees And really our goal is to 
+make life easy for you So how it works in action
+
+0:51:43.440,0:51:49.200
+um as with the other root interfaces what you do 
+to open is you need the name of your tree or the
+
+0:51:49.200,0:51:54.960
+name of your data set in general and then the 
+path to uh this data set Uh this can be a path
+
+0:51:54.960,0:51:59.440
+to on your local machine It can also be a URL to 
+to a file that's hosted somewhere else And then
+
+0:51:59.440,0:52:04.240
+to create our data frame simply we call root dot 
+our dataf frame with the name of the data set and
+
+0:52:04.240,0:52:12.720
+the path to the data set And pretty much that's it 
+So to see it in action um again we have to import
+
+0:52:12.720,0:52:20.880
+root and we open it and yeah exactly So we open we 
+have the data frame and you can see that we have
+
+0:52:20.880,0:52:28.800
+four columns a b ve one and ve two which we now 
+can actually start using uh to define our analysis
+
+0:52:28.800,0:52:34.480
+Let's let's call it for now So we can define new 
+quantities which means with that um so we started
+
+0:52:34.480,0:52:39.920
+with four columns and using define actually add 
+more columns also using the data that's already
+
+0:52:39.920,0:52:45.440
+in the file we can filter rows according to 
+some conditions for example if you have the
+
+0:52:45.440,0:52:51.440
+column a you only want the val the the entries 
+for which the value of a is larger or or smaller
+
+0:52:51.440,0:52:58.000
+than a certain amount and we can do some data 
+aggregations So to see it in action for example in
+
+0:52:58.000,0:53:03.680
+the define we want an additional property called C 
+which is derived from the columns that we already
+
+0:53:03.680,0:53:10.400
+have A and B So we can call dataf frame.define 
+and uh really just give the expression on the
+
+0:53:10.400,0:53:14.880
+names of the columns So we don't know we don't 
+have to know exactly what's in the columns only
+
+0:53:14.880,0:53:21.120
+have to know that it's in numerical value Then we 
+can actually define a filter on this new property
+
+0:53:21.120,0:53:27.840
+C Um so we're only interested in the entries in 
+the data frame that have uh C smaller than uh than
+
+0:53:27.840,0:53:34.400
+a half We can count the number of of elements 
+that are left in our set We can get the mean
+
+0:53:34.400,0:53:43.520
+uh and then we uh display the values that we have 
+So see it in action So we can see that um after we
+
+0:53:43.520,0:53:51.600
+have performed our filter uh we're left with 111 
+uh events and the mean of our uh of our column
+
+0:53:51.600,0:54:00.880
+C is um 0.38 39 Um and we can actually show the 
+first n entries by default is five uh entries of
+
+0:54:00.880,0:54:06.000
+the data set just to quickly verify yeah what it 
+looks like And we can see that's actually correct
+
+0:54:06.000,0:54:14.080
+We did the addition right Okay So that's really 
+our data frame um in a nutshell Of course now you
+
+0:54:14.080,0:54:21.920
+also want to do uh or once you've uh executed your 
+analysis you've defined your your um well defined
+
+0:54:21.920,0:54:28.400
+your filters your calculations um you want to see 
+your results and uh of course Jonas already showed
+
+0:54:28.400,0:54:33.760
+how it works with uh with histograms and and with 
+functions But our data frame really also can help
+
+0:54:33.760,0:54:41.760
+you to streamline the creation of histograms and 
+graphs and um any way to to show your results So
+
+0:54:41.760,0:54:47.200
+for example and again we used JS root again it 
+looks very similar to to what you already saw
+
+0:54:47.200,0:54:52.240
+we have to create a canvas But now what we do 
+differently is we already have the data frame
+
+0:54:52.240,0:54:56.640
+and really only what we need to do if for example 
+we want to create a histogram showing the results
+
+0:54:56.640,0:55:03.120
+of the contents of ve one is call data frame 
+his 1D and then the name of the column we want
+
+0:55:03.120,0:55:09.520
+to create the histogram for then we can draw it 
+and and draw the canvas as usual uh we get a nice
+
+0:55:09.520,0:55:15.200
+histogram and even though um so as you might 
+already guess from the name V one is actually
+
+0:55:15.200,0:55:21.280
+not flat data but it's uh entries containing 
+uh vectors that maybe are different sizes for
+
+0:55:21.280,0:55:28.320
+every entry RDF really is able to to nicely like 
+merge it together into one one size data frame
+
+0:55:28.320,0:55:33.680
+uh without you having to think too much about it 
+but you can think about it if you want and just
+
+0:55:33.680,0:55:38.480
+to to kind of give an overview so histo 1D will 
+create a one-dimensional histogram so that the one
+
+0:55:38.480,0:55:44.720
+you already saw and then we also have functions 
+for two and three dimensional and it's as easy
+
+0:55:44.720,0:55:48.800
+as providing just only the column name but you can 
+also actually provide more parameters in the form
+
+0:55:48.800,0:55:54.480
+of a tupole that you can pass that you already 
+saw in uh in the let's call vanilla histogram
+
+0:55:54.480,0:56:00.080
+function so the number of bins min the max we can 
+give the histogram a name we can give it a title
+
+0:56:00.080,0:56:06.560
+we can say the number of bins uh the x low the x 
+up and then put it all in a pupil and give it to
+
+0:56:06.560,0:56:11.840
+the histo 1D function and then if we execute it 
+you'll actually see so it's the same data that we
+
+0:56:11.840,0:56:16.880
+saw in the previous histogram but now with these 
+parameters we actually can kind of control what
+
+0:56:16.880,0:56:23.440
+parts are visible in the histogram and I have some 
+points that are maybe good for you to to take home
+
+0:56:23.440,0:56:31.760
+really if you uh start using our data frame and 
+analysis in general So RDF is really built with
+
+0:56:31.760,0:56:40.320
+a with a flexible workflow in mind and the most 
+important part is that you think really about
+
+0:56:40.320,0:56:45.600
+how your data flows through the workflow So if you 
+have certain properties really the important thing
+
+0:56:45.600,0:56:51.520
+is to think about which parts do I need to filter 
+which parts do I need to define and yeah how does
+
+0:56:51.520,0:56:57.520
+it kind of look if I draw it out as a kind of like 
+a like a graph uh which hardly can also do for you
+
+0:56:57.520,0:57:02.960
+what really does it look like from a bird's eye 
+point of view and then of course you can also uh
+
+0:57:02.960,0:57:10.720
+once you have this data flow uh apply actions to 
+it so such as creating creating histogram a really
+
+0:57:10.720,0:57:15.440
+important note here is I mentioned mentioned 
+that under the hood our data frame does a lot of
+
+0:57:15.440,0:57:20.400
+optimizations and make sure that the the analysis 
+can be run as fast as possible There's one task
+
+0:57:20.400,0:57:25.360
+that's kind of left as a responsibility to you 
+to the user and that's to make sure that all the
+
+0:57:25.360,0:57:31.360
+transformations and and actions So creating 
+the filters creating the defines saying that
+
+0:57:31.360,0:57:36.880
+you would like to create a histogram It's really 
+important that you kind of write this down like
+
+0:57:36.880,0:57:41.520
+define this in your code before you do actually 
+anything with the results And the reason is that
+
+0:57:41.520,0:57:48.640
+our data frame u has this notion of laziness which 
+means that first we schedule what needs to happen
+
+0:57:48.640,0:57:53.840
+and then only if you want to access the results 
+the execution happens So if you already access
+
+0:57:53.840,0:58:00.880
+the results and then start amending to it kind of 
+the whole notion of this laziness is removed Um
+
+0:58:00.880,0:58:07.760
+so really only yeah try to be as lazy as possible 
+that would be um yeah and then really only after
+
+0:58:07.760,0:58:14.080
+that look at your results So we have our data set 
+and we want to create three histograms one for A
+
+0:58:14.080,0:58:19.680
+one for B one for ve one Now if you create 
+the histogram and then get the value from
+
+0:58:19.680,0:58:25.280
+the histogram or plot the histogram after each 
+definition of the histogram the data set will
+
+0:58:25.280,0:58:31.120
+get processed uh three times which is not ideal 
+because ideally you just want to process the data
+
+0:58:31.120,0:58:36.640
+set once and then only access the results So here 
+and the reason why it happened here is because you
+
+0:58:36.640,0:58:45.520
+call um this 1D then get value which will actually 
+run the workflow and then you do it again um twice
+
+0:58:45.520,0:58:52.000
+Now to do it correctly we would go the other way 
+We first define all our all of our histograms and
+
+0:58:52.000,0:58:57.200
+then only after that um mucle get value and the 
+you can see that the data set is only processed
+
+0:58:57.200,0:59:02.640
+once I just want to give a summary on the type 
+of operations that we have in in uh in RDF and
+
+0:59:02.640,0:59:08.480
+there are three main types of of operations So the 
+first one is transformations and that's really the
+
+0:59:08.480,0:59:14.800
+category of uh filters defines and there's also 
+one called alias which really lets you define
+
+0:59:14.800,0:59:20.960
+or the thing what it does is it lets you kind of 
+rename certain columns and there's there's a bunch
+
+0:59:20.960,0:59:26.720
+more that you can find in the in the documentation 
+So it really modifies the actual data frame
+
+0:59:26.720,0:59:32.160
+uh that you're using for your processing Then 
+the second one is actions which you can use to
+
+0:59:32.160,0:59:39.040
+aggregate parts or maybe even the entire data set 
+into a result So for example creating a histogram
+
+0:59:39.040,0:59:44.320
+or counting the number of events processed uh 
+getting the mean getting the min getting the max
+
+0:59:44.320,0:59:51.920
+And then we have a third one um which is queries 
+which are actually not being put into the workflow
+
+0:59:51.920,0:59:56.800
+um they are really kind of to for you to get 
+information about your data frame For example
+
+0:59:56.800,1:00:01.120
+what are the names of the columns I have in the 
+data set yeah What are the types you can actually
+
+1:00:01.120,1:00:05.520
+and and then save graphs If you have your nice 
+workflow you can actually create a visualization
+
+1:00:05.520,1:00:09.280
+of what it looks like just for you to visually 
+verify that all the filters are in the right
+
+1:00:09.280,1:00:25.440
+place And um yeah just [Music] check your task or 
+your Yeah Your challenge your exercise is to find
+
+1:00:25.440,1:00:32.560
+the hidden uh normal distribution So really what 
+you have to do is use our data frame to define
+
+1:00:32.560,1:00:39.280
+the filters find the defines and then find uh yeah 
+the the hidden distribution by uh by the natural
+
+1:00:39.280,1:00:44.320
+logarithm Um there are two links The first one is 
+the our dataf frame class reference and it really
+
+1:00:44.320,1:00:50.480
+shows you the the name of the functions and 
+the type of um actually show you it will show
+
+1:00:50.480,1:00:55.280
+you exactly all the functions you can call It 
+has a really nice uh cheat sheet that's divided
+
+1:00:55.280,1:01:01.360
+according to the the three categories that um I 
+explained earlier So we have the transformations
+
+1:01:01.360,1:01:06.720
+the actions and then the the queries And this 
+is really a perfect like starting point for for
+
+1:01:06.720,1:01:11.760
+using RDF If you want to do something but aren't 
+really sure what it's called you can just go here
+
+1:01:11.760,1:01:17.360
+say for example you need to define a filter can 
+click on here and it will bring you to actually
+
+1:01:17.360,1:01:23.120
+the interface uh and it will tell you exactly 
+what the arguments are uh you need One thing to
+
+1:01:23.120,1:01:29.360
+note is that this is the um documentation is for 
+C++ but you can pretty much one-on-one also use
+
+1:01:29.360,1:01:38.000
+it for for Python Um and then second one has some 
+uh tutorials uh both in C++ and Python and you can
+
+1:01:38.000,1:01:44.000
+use it as an example and maybe see if you can mix 
+and match some of the things for your uh solution
+
+1:01:46.640,1:01:56.320
+The first step that's that we need to do is to 
+create the data set which we know how to do with
+
+1:01:56.320,1:02:03.520
+the data set name that we were told and the root 
+file And the second step which we can actually
+
+1:02:03.520,1:02:10.400
+do in just one line consists of a few substeps 
+So I'm pretty sure that most of you got to the
+
+1:02:10.400,1:02:17.520
+filtering part So that the b has to be less 
+than or less or equal than 0.5 And then the
+
+1:02:17.520,1:02:23.280
+second part that was maybe slightly more tricky 
+is to define this logarithm of a And here we're
+
+1:02:23.280,1:02:33.600
+using the the root tmath class which gives you 
+the log a So this is the second step And then
+
+1:02:33.600,1:02:41.040
+uh we were told that if we look into the 
+distribution of this new column that we called log
+
+1:02:41.040,1:02:53.120
+a we should get the normal distribution And now we 
+can just use the JS root command Now we can just
+
+1:02:53.120,1:03:00.480
+um do the drawing So the root t canvas and 
+we draw the histograms and then we draw the
+
+1:03:00.480,1:03:16.960
+canvas and what we obtain is indeed something 
+that that looks like the normal distribution
+
+1:03:16.960,1:03:22.480
+[Music] We are going to discuss now 
+um something which is very very common
+
+1:03:22.480,1:03:29.280
+um for for high energy physical analysts uh which 
+is the fact that we have to most often work with
+
+1:03:29.280,1:03:35.920
+the collections in our data sets So you will have 
+since the data sets often represent uh physical
+
+1:03:35.920,1:03:43.360
+quantities of particles that collided in an event 
+or that resulted as a collision um you will have
+
+1:03:43.360,1:03:49.680
+more than one element in the same in the same 
+row So that that is why you have collections Um
+
+1:03:49.680,1:03:55.600
+in our data frame you have certain specificities 
+For example you will you will see here and there
+
+1:03:55.600,1:04:02.640
+um something that is called root arc uh popping 
+up This is just the in-memory representation of
+
+1:04:02.640,1:04:09.520
+a vector a vector of uh particle properties 
+uh that we have in root So nothing nothing
+
+1:04:09.520,1:04:14.080
+um weird about it It's just our own way of 
+representing it But you can just visualize
+
+1:04:14.080,1:04:21.200
+it as a as a vector in mind And um other than 
+that now we will take a look at the first at
+
+1:04:21.200,1:04:29.040
+the first example here Let me zoom out and then 
+we start So we have our usual um constructor for
+
+1:04:29.040,1:04:35.600
+the R data frame object This time if this is still 
+visible I hope this time we have a different data
+
+1:04:35.600,1:04:42.560
+set a different file And in this data set we have 
+four columns um with the with the following names
+
+1:04:42.560,1:04:49.280
+that you can see here And now we would like to to 
+inspect the data set uh and in particular here I
+
+1:04:49.280,1:04:55.120
+will use um a functionality available in our data 
+frame which is already a bit more advanced which
+
+1:04:55.120,1:05:02.480
+is the possibility to convert one or more more 
+columns of your data set into numpy arrays and in
+
+1:05:02.480,1:05:11.200
+this case let me just start with one column the 
+column uh e um if you if you call these s numpy
+
+1:05:11.200,1:05:18.320
+uh object method here uh you will get a dictionary 
+of numpy arrays where the key is the name of the
+
+1:05:18.320,1:05:23.120
+column and the value is the numpy array 
+representing the the values in the column
+
+1:05:23.120,1:05:29.920
+and I'm simply in this cell I am printing uh one 
+by one all the elements of this particular column
+
+1:05:29.920,1:05:37.120
+row per row so in every row we have three uh in 
+particular row zero row one and row two I wanted
+
+1:05:37.120,1:05:43.440
+to print it out explicitly to screen to show you 
+the fact that they not only we have collections
+
+1:05:43.440,1:05:50.640
+inside of the column uh but we also have um that 
+every row has a different size of the collection
+
+1:05:50.640,1:05:56.720
+and u and you have to keep this in mind because it 
+makes uh things a bit harder to to manipulate and
+
+1:05:56.720,1:06:04.800
+process right in your uh in your data analysis 
+pipelines So now comes really the important bit
+
+1:06:04.800,1:06:10.800
+um of this um of this part of the lecture and and 
+I will take some time to discuss what's happening
+
+1:06:10.800,1:06:19.600
+here Here we are for the first time trying to do 
+something to process somehow the the data set that
+
+1:06:19.600,1:06:29.440
+contains collections and we want to perform an 
+operation that has both the the aspect of creating
+
+1:06:29.440,1:06:35.840
+a new observable but at the same time we are also 
+performing a selection Let's take it step by step
+
+1:06:35.840,1:06:42.160
+In the expression that you can see highlighted 
+in the middle of the of the slide there are three
+
+1:06:42.160,1:06:49.760
+variables three observables px py and e These 
+are the columns of our data set And then we are
+
+1:06:49.760,1:06:57.520
+doing some manipulation here From left to right we 
+have an external call to a square root operation
+
+1:06:57.520,1:07:03.360
+with an argument And then right after the square 
+root operation we have this brackets with square
+
+1:07:03.360,1:07:12.640
+brackets um syntax Now the the square bracket 
+syntax is exactly the same as a as a numpy square
+
+1:07:12.640,1:07:21.920
+bracket syntax What we are doing here is we are we 
+are um masking the outer array with the elements
+
+1:07:21.920,1:07:28.160
+from the condition the criterion present within 
+the square brackets So let's take a look at that
+
+1:07:28.160,1:07:33.600
+for a second We have E greater than 100 You can 
+guess what this does It checks for every value of
+
+1:07:33.600,1:07:40.640
+the numpy array of the array at the current event 
+of the column E whether that value is greater or
+
+1:07:40.640,1:07:50.480
+not than 100 So the output of E greater than 100 
+is not just one boolean like one true or false
+
+1:07:50.480,1:07:57.680
+It's it's a collection of booleans one per 
+each element from the from the array E Right
+
+1:07:57.680,1:08:03.920
+and this is how then the outer array So the 
+result of the square root will be masked So
+
+1:08:03.920,1:08:09.760
+whatever comes out of the square root operation on 
+the left will be another array But then we select
+
+1:08:09.760,1:08:15.360
+from that array only the elements that pass the 
+selection criterion E greater than greater than
+
+1:08:15.360,1:08:24.240
+100 And okay so now we can then go to the square 
+root operations In particular the parameters here
+
+1:08:24.240,1:08:29.360
+as I said before they are collections So we are 
+in in the current event we have px and py they
+
+1:08:29.360,1:08:34.960
+represent the collections of px and py for the 
+particles in the event and you see that we are
+
+1:08:34.960,1:08:39.440
+performing some manipulations here we are uh 
+multiplying them we are summing them and then
+
+1:08:39.440,1:08:43.840
+there's their square root the important bit 
+to remember here is that the dimensionality
+
+1:08:43.840,1:08:50.880
+of the arrays is always preserved uh what do I 
+mean by this px * px is a scalar product between
+
+1:08:50.880,1:08:55.440
+the two between the two vectors so you will have 
+the same dimension coming out of the operation
+
+1:08:56.240,1:09:05.840
+The sum is again preserving the dimensionality 
+So if px and p y have size three then the sum of
+
+1:09:05.840,1:09:11.920
+them will be still a size three vector with the 
+elements uh summed element by element And then
+
+1:09:11.920,1:09:18.000
+the square root same thing So in general we are 
+preserving the dimensionality of the input arrays
+
+1:09:18.000,1:09:23.920
+Um and then finally the whole expression 
+is give me the square root of the of the
+
+1:09:23.920,1:09:30.480
+um uh square of the sum of squares of the two 
+vectors and then select only the elements that
+
+1:09:30.480,1:09:37.600
+um pass the criterion I said that we are doing 
+a selection right because there's this masking
+
+1:09:37.600,1:09:45.360
+operation with the array greater than 100 So 
+when I say selection it kind of in you could
+
+1:09:45.360,1:09:52.960
+think about it as as filtering your data as cut 
+as a cut in your your analysis workflow But there
+
+1:09:52.960,1:10:00.080
+is an important distinction here The distinction 
+is between interevent selection and intraevent
+
+1:10:00.080,1:10:08.160
+selection So the first category is whenever you 
+have a question a query which output should be
+
+1:10:08.160,1:10:14.400
+true or false So for example give me all the 
+events where the number of muons is greater
+
+1:10:14.400,1:10:21.200
+than two Uh for every event you check how many 
+muons do I have is it greater than two or not
+
+1:10:21.200,1:10:27.600
+and this if it's false it means that you do not 
+want to see that event at all for the rest of your
+
+1:10:27.600,1:10:35.200
+analysis You don't care about it So you discard it 
+Operations that discard an entire event these are
+
+1:10:35.200,1:10:41.760
+proper properly called filters or cuts And in our 
+data frame you use the filter operation that we
+
+1:10:41.760,1:10:51.200
+have seen before for this type of um of filtering 
+In this case we are doing a filter but we are not
+
+1:10:51.200,1:10:58.960
+logically discarding the entire event We are we 
+are saying okay within this event I want to keep
+
+1:10:58.960,1:11:04.720
+some of the particles those that respect respect 
+a certain criterion So in this case we are still
+
+1:11:04.720,1:11:12.800
+interested in seeing the event afterwards just 
+slightly modified So this is why in this example
+
+1:11:12.800,1:11:19.760
+you see the define operation being called and 
+not the filter operation This is an important
+
+1:11:19.760,1:11:26.320
+distinction and kind of the main point when 
+processing uh array data with with our data
+
+1:11:26.320,1:11:36.560
+frame Okay So the question is um here in this 
+particular example we are using the square root
+
+1:11:36.560,1:11:42.080
+function and why don't we need to prefix any 
+name space to the square root function Well in
+
+1:11:42.080,1:11:48.080
+this case the square root function comes from the 
+standard C++ name space So this is stood square
+
+1:11:48.080,1:11:55.680
+uh square root The way the the C++ programming 
+language works is if the function arguments in
+
+1:11:55.680,1:12:02.320
+this case px py these are these are of type 
+arebec If the function arguments match with
+
+1:12:02.320,1:12:10.560
+the signature of the square root function that 
+has that type so root artbec then um the the the
+
+1:12:10.560,1:12:16.800
+compiler the program will execute the correct 
+function even without you having to explicitly
+
+1:12:16.800,1:12:22.560
+write the the name space and in this case it's 
+not ambiguous because there is not another uh
+
+1:12:22.560,1:12:28.160
+square root function at the global namespace 
+let's say so the the compiler knows what to do
+
+1:12:28.160,1:12:34.720
+um and this in particular is also different 
+from the t-math colon square root function So
+
+1:12:34.720,1:12:41.040
+um there's no ambiguity there You could use 
+of course Yeah Here instead you can you can
+
+1:12:41.040,1:12:47.760
+give tmath square root or you can define 
+your own square root function and use that
+
+1:12:47.760,1:12:54.240
+The only the only requirement is that it can be 
+interpreted by our C++ interpreter Yes for now at
+
+1:12:54.240,1:13:03.360
+least Now we have this new column good PT and we 
+can try to plot it with the usual 1D operations
+
+1:13:03.360,1:13:08.720
+that we have seen already many times now 
+and it should be visible here Yes So now
+
+1:13:08.720,1:13:16.880
+we have this histogram that is being um that is 
+being plot uh only keeping the elements the the
+
+1:13:16.880,1:13:25.600
+values of the PT of each event that passed 
+the selection process in the previous slide
+
+1:13:31.920,1:13:37.840
+It's going to be an exercise on on the same on 
+the same subject So we have um the data set that
+
+1:13:37.840,1:13:43.760
+we used in the previous exercise and we know that 
+this data set contains two vector um columns back
+
+1:13:43.760,1:13:50.240
+one and ve two Um we have a mixture of gshian 
+and some background noise in the ve one column
+
+1:13:50.240,1:13:57.120
+And then there is an assignment to remove this 
+noise in order to plot the gshian peaks Uh in in
+
+1:13:57.120,1:14:03.600
+order to do that you can se select the elements of 
+vec one the column ve for which the square of the
+
+1:14:03.600,1:14:11.680
+corresponding elements in vec 2 is less than 0.1 
+So the exercise is to um do perform this selection
+
+1:14:11.680,1:14:18.800
+process in order to then plot the histogram of ve 
+one that shows this uh um the two the two gshian
+
+1:14:18.800,1:14:29.120
+peaks So again the assignment was to uh find the 
+peaks of gshians that were hidden in this uh in
+
+1:14:29.120,1:14:41.040
+this data set Let's uh quickly open our data frame 
+object So we have the data set from uh example
+
+1:14:41.040,1:14:51.520
+style.root Um and then we have we're interested 
+in columns ve one and ve two We have to do this
+
+1:14:51.520,1:14:56.720
+task of removing the background noise by 
+selecting the elements of ve one for which
+
+1:14:56.720,1:15:02.240
+the square of the corresponding elements 
+in ve two is less than 0.1 So we have this
+
+1:15:02.240,1:15:09.200
+uh objective of doing a selection intraevent 
+within the same event event by event clearly
+
+1:15:09.200,1:15:15.520
+So we we have to create a new column in 
+this case uh it's going to be uh good
+
+1:15:15.520,1:15:27.200
+uh good particles and here what we do is we 
+call define um with the name of this column
+
+1:15:27.200,1:15:31.680
+and what is the what is the selection that 
+we have to perform So we want the elements
+
+1:15:31.680,1:15:40.000
+of vect one in the end So vector one is going to 
+be our output vector and then we can do the the
+
+1:15:40.000,1:15:45.600
+square bracket selection like like with with a 
+numpy array And in this case these the selection
+
+1:15:45.600,1:15:55.840
+criteria is the criterion is the square uh of the 
+corresponding elements in back two is less than uh
+
+1:15:55.840,1:16:05.760
+0.1 So so you see even though we 
+are performing a selection it is
+
+1:16:05.760,1:16:11.520
+indeed a case where we want to create 
+a new column just to store the values
+
+1:16:11.520,1:16:20.560
+uh that of the of the correct particles that uh 
+pass the selection And then we can um use our
+
+1:16:20.560,1:16:33.520
+good old trusty uh 1D operation on this new on 
+this new column And then we do the plotting So
+
+1:16:33.520,1:16:41.200
+canvas and then see the draw Let's 
+see if everything went according to
+
+1:16:41.200,1:16:51.600
+plan Something didn't went 
+go according to plan Data
+
+1:16:51.600,1:16:58.160
+Sorry Ah data Yes Good
+
+1:17:00.720,1:17:05.760
+So okay we open the data set we create this 
+selection and then we see the histogram being
+
+1:17:05.760,1:17:13.440
+plot So you have the two picss You could have 
+also decided to plot back one just to check
+
+1:17:13.440,1:17:20.160
+And if we do that see that there was this 
+extra noise in the original column that we
+
+1:17:20.160,1:17:30.400
+removed by by creating the good particles all 
+did Was anybody successful in in this exercise
+
+1:17:30.400,1:17:37.360
+just as a show of raise of ants okay Okay It's 
+one of the more advanced concepts here in the
+
+1:17:37.360,1:17:48.880
+data set manipulation step So uh try try 
+to take some time really to make it yours
+
+1:17:52.280,1:17:59.760
+[Music] How to save a data set once you are done 
+processing it You remember from the slides that
+
+1:17:59.760,1:18:04.560
+Florina was discussing that we have this concept 
+of the root file So the T file and that we can
+
+1:18:04.560,1:18:11.120
+store anything in it and this includes also root 
+data sets which come in this format that is known
+
+1:18:11.120,1:18:17.840
+as T3 Um it turns out that our data frame is 
+your best friend when you just want to save
+
+1:18:17.840,1:18:25.600
+stuff when you want to save T3 into a file because 
+there's one simple function that you can call It's
+
+1:18:25.600,1:18:35.200
+called snapshot and it will store a T3 properly 
+formatted into a T file given the uh parameters
+
+1:18:35.200,1:18:39.920
+that you pass to the function So you can see it in 
+this example here at the end of the at the end of
+
+1:18:39.920,1:18:45.120
+the cell The parameters are self-explanatory You 
+have a you have the name of the tree the name of
+
+1:18:45.120,1:18:50.720
+the data set that you want to store the name of 
+the file that you want to store the data set in
+
+1:18:50.720,1:18:56.240
+and then you can also make a selection of columns 
+In in fact in this example we are taking the the
+
+1:18:56.240,1:19:04.080
+usual file from our data directory We are creating 
+a new column called C and then we are saving it
+
+1:19:04.080,1:19:09.760
+together with columns A and B So you see that we 
+have this list of columns and then you can pass
+
+1:19:09.760,1:19:18.960
+the list of columns as the third argument And if 
+we if we execute it okay we will see in the next
+
+1:19:18.960,1:19:29.520
+cell that there is an actual file on disk with the 
+correct name and that it contains the um the T3
+
+1:19:29.520,1:19:34.960
+that we expected with the columns that we expected 
+So in particular you see that this file has a T3
+
+1:19:34.960,1:19:41.600
+object that its name is out three the same name 
+as we uh as we chose and then there are there's
+
+1:19:41.600,1:19:49.200
+a list of columns uh stored inside of the tree A 
+B and C If you go back uh to the previous example
+
+1:19:49.200,1:19:56.160
+here and you just also write back one from the 
+from the from the name of the columns of before
+
+1:19:56.160,1:20:02.080
+even a better example than this is showing you 
+the fact that by default this snapshot operation
+
+1:20:02.080,1:20:07.280
+doesn't need this list of column names and if 
+you do not provide the list of column names it
+
+1:20:07.280,1:20:13.280
+will just store all the columns that are available 
+to the data frame up to that point So I can just
+
+1:20:13.280,1:20:24.480
+repeat this cell and then go here and then if I 
+rerun the cell now it will show all the columns
+
+1:20:24.480,1:20:30.400
+A C B A ve 2 and ve one So all of the columns 
+that were available before they're they're now
+
+1:20:30.400,1:20:38.240
+available in the in the tree because by default 
+that's what the snapshot does And finally we have
+
+1:20:38.240,1:20:44.400
+maybe you have not noticed it uh automatically 
+but this snapshot operation does not only store
+
+1:20:44.400,1:20:51.440
+on disk but also returns something So there's a 
+there's a return variable up here and the return
+
+1:20:51.440,1:20:58.880
+variable can actually be used again and it's just 
+another R data frame object So you can for example
+
+1:20:58.880,1:21:05.360
+display its contents because it's available uh in 
+memory in memory of the computer as another R data
+
+1:21:05.360,1:21:10.960
+frame object kind of detached from the previous 
+one So you can restart your analysis and do other
+
+1:21:10.960,1:21:16.800
+kinds of operations and manipulations 
+with this Um some other topic is about
+
+1:21:16.800,1:21:24.240
+uh again about the selection processes This uh is 
+this is a recurrent theme in physics of course and
+
+1:21:24.240,1:21:31.680
+the concept of cut flow reports So sometimes you 
+want to um get a nice uh representation of how
+
+1:21:31.680,1:21:38.800
+your filters affect the the data set that you're 
+manipulating So the filter efficiency depending on
+
+1:21:38.800,1:21:44.480
+uh the the columns the branches and which particle 
+properties you're observing with the selections
+
+1:21:44.480,1:21:51.520
+in our data frame you have this report operation 
+that gathers all the information from the filter
+
+1:21:51.520,1:21:59.040
+uh calls that you have uh applied to your data set 
+and then prints out this report if you ask it to
+
+1:21:59.040,1:22:07.040
+uh after the uh event loop after the computation 
+has run So in this case I am taking a new file
+
+1:22:07.040,1:22:13.680
+Uh note as a just something that is uh good 
+to know that this file doesn't even belong
+
+1:22:13.680,1:22:20.240
+to the local disk the local file system but I am 
+actually passing it as a URL This is very typical
+
+1:22:20.240,1:22:26.560
+in our field We have large data sets and they 
+are very very frequently stored um outside of
+
+1:22:26.560,1:22:32.720
+your laptop outside of your of your machine that 
+you're running on So we have the ability to read
+
+1:22:32.720,1:22:37.840
+them from the remote location that they're stored 
+at And here I'm opening an R data frame reading
+
+1:22:37.840,1:22:45.680
+data from this particular file I have two filters 
+on on leptton properties and I give them names
+
+1:22:45.680,1:22:53.360
+So a cut on the cut on the fi and then the report 
+operation down here at the bottom will tell me how
+
+1:22:53.360,1:23:00.480
+many events passed the filter how many events were 
+present before the filter uh and then just as a
+
+1:23:00.480,1:23:06.400
+summary report the efficiency of every filter and 
+the commutative efficiency of all the filters so
+
+1:23:06.400,1:23:09.760
+far
+
+1:23:09.760,1:23:21.680
+Okay All right Clearly we have already seen in 
+previous uh in previous notebooks that root is
+
+1:23:21.680,1:23:28.480
+this package that lets you use Python and C++ 
+together our data frame is no difference there
+
+1:23:28.480,1:23:35.280
+Um and uh the way that you've seen for example 
+Yonas in the beginning reporting on how you can
+
+1:23:35.280,1:23:41.360
+use C++ libraries define your custom functions 
+and use them from the Python side is the same in
+
+1:23:41.360,1:23:48.560
+our data frame Uh under the hood it calls this 
+uh C++ interpreter which is called cling uh to
+
+1:23:48.560,1:23:55.200
+use to use the C++ functions that you've defined 
+This function is a very simple one that takes a
+
+1:23:55.200,1:24:03.520
+number and changes its type uh in this case and 
+uh I'm calling it sloat So it's a function that
+
+1:24:03.520,1:24:10.720
+does a cast in the end And then we can okay this 
+is another function that squares a floating point
+
+1:24:10.720,1:24:18.480
+value And now you we can use the functions in our 
+data frame quite simply You can either use them
+
+1:24:18.480,1:24:24.720
+with this uh string syntax as we have seen so far 
+You can also use them with the other syntax that
+
+1:24:24.720,1:24:29.920
+we showed before that they become part of the 
+root module So you have root dot function that
+
+1:24:29.920,1:24:38.480
+you just defined Um and uh and this is how it's 
+uh working in action So after the definition of
+
+1:24:38.480,1:24:45.600
+the um of the new values of the new columns we 
+can just plot them for example in a graph and
+
+1:24:45.600,1:24:52.640
+uh and the graph will be shown using the values 
+from the data frame So this is all um bread and
+
+1:24:52.640,1:24:59.440
+butter stuff for area frame analysis You will 
+mostly see this in some frameworks uh that are
+
+1:24:59.440,1:25:06.320
+already available in some uh in some experiment 
+groups Um and they use the libraries and the
+
+1:25:06.320,1:25:12.240
+functions that that are defined in the framework 
+itself Often they're also defined in C++ They use
+
+1:25:12.240,1:25:19.760
+them in our data frame in this way even if the 
+user side of the framework is written in Python
+
+1:25:20.880,1:25:28.480
+And finally as a as a final mention uh our data 
+frame and clearly root in general is a very
+
+1:25:28.480,1:25:37.920
+performanceoriented software in particular all the 
+nice uh features of lazy execution and uh booking
+
+1:25:37.920,1:25:43.280
+all your your operations up front that we were 
+discussing earlier they come in handy especially
+
+1:25:43.280,1:25:51.120
+when you want to um introduce parallelism in your 
+application So nowadays every laptop has at least
+
+1:25:51.120,1:25:58.080
+four cores practically um or at least four threads 
+but uh most often you will see machines with uh
+
+1:25:58.080,1:26:04.080
+upwards of hundreds of cores and uh and clearly 
+it's very nice if you could actually make use of
+
+1:26:04.080,1:26:10.560
+of those resources and our data frame lets you do 
+this quite simply um you just have to write one
+
+1:26:10.560,1:26:16.880
+line of code at the beginning of your application 
+the line of code is as follows um okay in this
+
+1:26:16.880,1:26:23.840
+case I'm Just showing you the baseline example 
+by uh taking yet another file opening an R data
+
+1:26:23.840,1:26:29.920
+frame with it and then summing the values of 
+one column takes some time And then in the
+
+1:26:29.920,1:26:38.720
+next cell I will do the same but pay attention 
+to this first line You call root enable implicit
+
+1:26:38.720,1:26:45.760
+MT and then everything else will run using the 
+maximum amount of cores available on the machine
+
+1:26:46.400,1:26:53.680
+uh I will run the cell now It's quite probable 
+that it will run as slow or even slower than the
+
+1:26:53.680,1:26:59.200
+previous cell for a simple reason The reason is 
+that this is not a powerful machine but it's a
+
+1:26:59.200,1:27:05.440
+shared instance with just two cores and the data 
+set is a data set stored remotely So it's not a
+
+1:27:05.440,1:27:11.680
+performanceoriented scenario here But if you might 
+happen to have a performanceoriented scenario and
+
+1:27:11.680,1:27:16.480
+you have a powerful machine at hand then just 
+know that with one line of code you go from
+
+1:27:16.480,1:27:33.360
+using one core to 128 cores on your machine So it 
+could be quite useful to to keep in [Music] mind
+
+1:27:33.360,1:27:42.480
+This is this is a simple very simple example of 
+an analysis um with open data from CMS and the
+
+1:27:42.480,1:27:48.560
+goal of the analysis is to plot the invariant 
+mass of the dimeu system So for the physicists
+
+1:27:48.560,1:27:55.680
+in the audience you know what we are about to do 
+Um and let's see let's try to do this together
+
+1:27:55.680,1:28:05.760
+right um let me kickstart the notebook for you or 
+with you and then um then I will let you attempt
+
+1:28:05.760,1:28:13.040
+u writing the the important bits of the analysis 
+So the data set in question as I said is an open
+
+1:28:13.040,1:28:20.080
+data file from from CMS stored on a remote 
+location in the certain data center In this
+
+1:28:20.080,1:28:26.400
+table we are just showing the um columns 
+and the data types that you have inside of
+
+1:28:26.400,1:28:32.320
+the data set Right so there are six columns 
+Uh most of them are vectors are collections
+
+1:28:32.320,1:28:38.720
+and only one represents the number of muons in 
+in the particular event that you're processing
+
+1:28:39.520,1:28:45.040
+first cell is easy We are just giving you the 
+name of the tree and the name of the file or the
+
+1:28:45.040,1:28:54.080
+path to the remote file so that our data frame can 
+process it Um and then and then the rest is where
+
+1:28:54.080,1:29:02.320
+the analysis really really is Um the first cell 
+here is is just a detail This analysis has this
+
+1:29:02.320,1:29:08.800
+data set has 61 million events uh probably there 
+would be they would be too many if we try to run
+
+1:29:08.800,1:29:14.320
+them right now altogether It would take a bit of 
+time So I'm doing this I'm just showing you how to
+
+1:29:14.320,1:29:22.400
+select with our data frame the first one million 
+events You have this simple um df.trange operation
+
+1:29:22.400,1:29:29.040
+So write it in that notebook cell and then our 
+data frame will only process the first one million
+
+1:29:29.040,1:29:34.960
+events from the data set so that you can see the 
+results bit quicker It will the the the final
+
+1:29:34.960,1:29:41.040
+histogram maybe will not be as clear as this There 
+will be less statistics but it will still show you
+
+1:29:41.040,1:29:49.520
+uh roughly the same roughly the same distribution 
+Okay And then we have two parts of the analysis
+
+1:29:49.520,1:29:55.680
+One is the filtering of the events that are you 
+know interesting for uh getting the invariant
+
+1:29:55.680,1:30:03.040
+mass and the other one is creating the invariant 
+mass In this case because there is already a very
+
+1:30:03.040,1:30:10.320
+simple function ready made for you and available 
+in in root we we just wrote it already for you So
+
+1:30:10.320,1:30:18.720
+you don't have to care about that But the filters 
+are there for you to fill in So you have to you
+
+1:30:18.720,1:30:25.440
+have to understand what to write in the cuts or 
+you you can think about it and then um and then
+
+1:30:25.440,1:30:31.440
+you can plot the histogram afterwards There's also 
+requests for booking a report of the operations So
+
+1:30:31.440,1:30:37.760
+it would be nice if you didn't only see the final 
+histogram but also the efficiencies of the of the
+
+1:30:37.760,1:30:47.280
+different cuts H let's take five minutes and then 
+let's do this together afterwards We stopped at
+
+1:30:47.280,1:30:54.160
+this cell right uh we are just selecting the first 
+million events so that uh whenever we try to plot
+
+1:30:54.160,1:31:00.320
+the histogram actually it won't be too won't 
+take too long Okay And this this was the next
+
+1:31:00.320,1:31:08.000
+cell So the text above the cell tells you already 
+uh the kind of selection criteria that you want to
+
+1:31:08.000,1:31:16.640
+apply And then there are two two filters um that 
+have already in in them the the hint as to what
+
+1:31:16.640,1:31:24.800
+you have to do The part that is missing is the 
+expression So for the expression the first filter
+
+1:31:24.800,1:31:38.240
+is the one where the events should have exactly 
+two muons How do we write the expression here yes
+
+1:31:38.960,1:31:47.440
+All right And mu1 equal equal 2 This makes sense 
+right because if we go to back to this table that
+
+1:31:47.440,1:31:52.720
+shows the that the data set schema we know that 
+the n muon column is the column that represents
+
+1:31:52.720,1:31:58.720
+the number of muons in the particular event So 
+for every event if we check whether nuon is equal
+
+1:31:58.720,1:32:07.920
+equal to then we know that we have exactly two 
+muons Okay Next uh next filter next selection
+
+1:32:07.920,1:32:17.760
+charge equal equal to zero M charge equal equals 
+Z This is what you wrote or ju just to make sure
+
+1:32:17.760,1:32:24.160
+I I'm understanding Yeah Yeah Okay So muon charge 
+equal equals 0 Let's try to think about this We
+
+1:32:24.160,1:32:34.480
+go back to the table and we see that muon charge 
+is um an an array of type int The dimension of
+
+1:32:34.480,1:32:41.040
+the array is n mu1 Mhm And it says charge of the 
+muon stored as an array of size and muon either
+
+1:32:41.040,1:32:47.360
+minus one or one Clearly this is the charge 
+Okay If we go back to the selection here what
+
+1:32:47.360,1:32:54.240
+we are doing is tell me if the array is equal 
+equals zero But from from the perspective of
+
+1:32:54.240,1:33:01.680
+the array we don't know whether what will this 
+operation do will it do every every element is
+
+1:33:01.680,1:33:07.920
+equal to zero or are you expecting this to do 
+that to do something like tell me if the size
+
+1:33:07.920,1:33:16.160
+of the array is equal to zero What what's your 
+expected outcome from the operation so the the
+
+1:33:16.160,1:33:21.920
+thing that the assignment says here is that the 
+muons in this event should have opposite charge
+
+1:33:21.920,1:33:28.640
+So what I am missing from this selection 
+here is something that tells me that two
+
+1:33:28.640,1:33:34.000
+elements of the array should be should be 
+opposite No because we we are looking for
+
+1:33:34.000,1:33:42.640
+the muons that have opposite charge Did anybody 
+try anything else maybe down there Yes Okay So
+
+1:33:42.640,1:33:49.120
+the sum over the elements of the array clearly 
+How what does this mean let's try to look at it
+
+1:33:49.120,1:33:55.600
+We have an array and we know that the array is 
+size two because the filter that we did before is
+
+1:33:55.600,1:34:02.640
+only give me those events that have two muons So 
+the muon charge will be an array of size two Okay
+
+1:34:02.640,1:34:08.560
+we know that the array is an array of integers 
+and it's either minus1 or one Interesting So
+
+1:34:08.560,1:34:16.080
+if we sum two elements and they are and the sum 
+is zero then we derive that minus1 + 1 is zero
+
+1:34:16.080,1:34:23.200
+Okay this is an interesting approach How did you 
+write this with a for loop with some operation
+
+1:34:23.200,1:34:35.040
+to accumulate okay Okay Okay Okay So what we could 
+do is writing it um this way So we could do in sum
+
+1:34:35.040,1:34:56.240
+right and we can do for um auto zero a less than 
+new charge dot size plus uh we do sum plus equal
+
+1:34:56.240,1:35:11.520
+uh mu1 charge of type uh sorry of index I and 
+then we return sum equal equal zero This is
+
+1:35:11.520,1:35:16.560
+uh roughly speaking the implementation of what 
+you described So we sum the elements of the array
+
+1:35:16.560,1:35:22.640
+into an external variable and then what we return 
+which is the important part Maybe let's write this
+
+1:35:22.640,1:35:31.680
+like so If we write come on okay if we write 
+it this way it will be a bit clearer probably
+
+1:35:31.680,1:35:39.040
+So we have the for loop and then what we return 
+is the important part right we we have a return
+
+1:35:39.040,1:35:44.560
+statement and we say in the return statement 
+tell me whether the sum is equal to zero Okay
+
+1:35:44.560,1:35:53.280
+interesting Were there any other attempts at 
+this okay So this could be a second approach We
+
+1:35:53.280,1:36:08.320
+have it here Uh we could do mu1 charge of zero the 
+first element is equals to minus - -1 * new charge
+
+1:36:08.320,1:36:18.000
+of index one Mhm Okay Yes This is also another 
+approach Let's try I don't know is there a third
+
+1:36:18.000,1:36:28.240
+way let's try with the first just for the sake 
+of going on with the exercise Good Um okay This
+
+1:36:28.240,1:36:33.600
+is the other part of the analysis but in this 
+case root already offers a nice invariant mass
+
+1:36:33.600,1:36:41.040
+function So you don't have to um code it yourself 
+So there was nothing to do here And this is the
+
+1:36:41.040,1:36:47.680
+final bit where we are creating the histogram 
+And the exercise was asking you to put the uh
+
+1:36:47.680,1:36:54.640
+the histogram parameters in the right order This 
+is just to check to see if after a couple of hours
+
+1:36:54.640,1:37:05.920
+seeing histograms over and over you remember the 
+the order of the parameters What's the first one
+
+1:37:05.920,1:37:13.200
+right Okay So name title and bins and 
+then the range of the of the x-axis
+
+1:37:13.200,1:37:20.640
+Okay then the request for booking a report 
+should be simple What do we write here we
+
+1:37:20.640,1:37:26.400
+saw this in the notebook just before the 
+exercise Maybe I went a bit too fast on
+
+1:37:26.400,1:37:36.240
+it So the the title kind of tells 
+you right the title of the slide
+
+1:37:36.240,1:37:42.400
+There's this functionality in RDF which we 
+will see used here exactly called report
+
+1:37:43.280,1:37:50.080
+Um so whenever you want to know how your filters 
+were applied to the data set you can ask to the
+
+1:37:50.080,1:38:00.960
+dataf frame object What did I do here um right 
+You can ask to the data frame object to report
+
+1:38:00.960,1:38:09.920
+um what happened during the filters So was just 
+a simple simple check here Okay we booked it and
+
+1:38:09.920,1:38:15.680
+finally we can actually start the analysis right 
+um there is some customization of the layout of
+
+1:38:15.680,1:38:21.680
+the histogram done for you so that when when you 
+go and match it with the link that we provided it
+
+1:38:21.680,1:38:28.800
+kind of looks the same So let's start let's start 
+the cell and let's see if everything runs without
+
+1:38:28.800,1:38:39.840
+problems Okay nice So everything seems to run 
+without problems Final check Let's see how the
+
+1:38:39.840,1:38:48.080
+histogram looks Okay pretty cool No it's uh shows 
+the same distribution as the open data as the open
+
+1:38:48.080,1:38:55.120
+data result Clearly if you go look at the other 
+picture you will see it bit more defined whereas
+
+1:38:55.120,1:38:59.840
+uh here it's a bit wiggly but clearly that's 
+because we only restricted ourselves to the
+
+1:38:59.840,1:39:08.080
+first million events And then just to end the 
+exercise you can ask the report to print the
+
+1:39:08.080,1:39:13.360
+values obtained from the two filters So 
+you have the first filter on the events
+
+1:39:13.360,1:39:20.720
+uh that have two muons From 1 million we go 
+uh down to almost 500,000 And then the second
+
+1:39:20.720,1:39:28.160
+filter where we check the muons with opposite 
+charge we go from from that number to 371,000
+
+1:39:28.160,1:39:35.360
+And that's what you actually see in the in the 
+output from uh this cell So today we covered
+
+1:39:35.360,1:39:42.960
+a number of topics We had a nice introduction 
+into uh what ROOT allows you to do specifically
+
+1:39:42.960,1:39:47.120
+uh everything that has to deal with the parts 
+of the workflow that are more related with
+
+1:39:47.120,1:39:55.680
+the analysis So um creating histograms important 
+statistics from your data set how to run fitting
+
+1:39:55.680,1:40:02.320
+uh on your on your statistics creating a file 
+opening a file writing stuff into the file and
+
+1:40:02.320,1:40:10.240
+then finally uh a big expression into uh our data 
+frame analysis um and and how it can actually be
+
+1:40:10.240,1:40:16.560
+practically useful if you have ROOT files and 
+you want to uh process them Uh in this other
+
+1:40:16.560,1:40:22.880
+slide we leave you the usual list of resources 
+Feel free to reach out to us uh in any way or
+
+1:40:22.880,1:40:29.760
+shape You can see we have a forum we have uh 
+websites and documentation and you can find
+
+1:40:29.760,1:40:37.360
+us uh if you have any problems also on GitHub 
+uh you can open uh issues Cool Uh the rest of
+
+1:40:37.360,1:40:43.600
+the uh of the slides is just extra material for 
+for you for self-study in case you uh you would
+
+1:40:43.600,1:40:49.600
+like to go a bit deeper into ROOT. And with that 
+said uh thanks again for joining us today from
+
+1:40:49.600,1:40:55.360
+me and the rest of the team and um yeah have 
+a nice rest of your summer studentship at CERN
