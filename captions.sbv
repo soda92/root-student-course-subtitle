@@ -346,7 +346,7 @@ the browser from a Jupyter notebook you enable 
 our JavaScript plotting back end with this
 
 0:10:50.560,0:10:59.600
-um magic command JS ROOT and then set it to on 
+um magic command `%%jsroot` and then set it to on 
 and uh and drawing always follows the same pattern
 
 0:10:59.600,0:11:10.400
@@ -1836,7 +1836,7 @@ you to streamline the creation of histograms and 
 graphs and um any way to to show your results So
 
 0:54:41.760,0:54:47.200
-for example and again we used JS ROOT again it 
+for example and again we used %%jsroot again it 
 looks very similar to to what you already saw
 
 0:54:47.200,0:54:52.240
@@ -2145,7 +2145,7 @@ distribution of this new column that we called log
 
 1:02:41.040,1:02:53.120
 a we should get the normal distribution And now we 
-can just use the JS ROOT command Now we can just
+can just use the %%jsroot command Now we can just
 
 1:02:53.120,1:03:00.480
 um do the drawing So the ROOT t canvas and 
