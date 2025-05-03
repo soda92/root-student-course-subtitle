@@ -1,49 +1,49 @@
 0:00:18.138,0:00:23.600
-[Music] what is root well for for me it's 
-always important to emphasize that it's a it's
+[Music] What is ROOT? well for for me it's 
+always important to emphasize that it's
 
 0:00:23.600,0:00:30.080
 an open-source project by the high energy physics 
-community for the community here uh the developers
+community for the community Here the developers
 
 0:00:30.080,0:00:37.120
 are right at CERN or at our partner institute and 
-um we are engaging with our user community on a
+we are engaging with our user community on a
 
 0:00:37.120,0:00:44.160
-daily basis So um if you have any questions about 
-root and how to use it in particular for your pro
+daily basis. So um if you have any questions about 
+ROOT and how to use it in particular for your
 
 0:00:44.160,0:00:51.520
 problem we also have a forum where you can ask 
-your questions So it's um it's really it's really
+your questions. So it's really
 
 0:00:51.520,0:00:58.480
-a a community effort and um at some point who 
-knows maybe you might contribute yourself Root
+a community effort and at some point, who 
+knows? maybe you might contribute yourself. ROOT
 
 0:00:58.480,0:01:06.000
 was mainly developed really to drive the analysis 
-at the LHC So that was started in the 90s when the
+at the LHC, so that was started in the 90s when the
 
 0:01:06.000,0:01:13.440
-LHC was really planned I think also root started 
-around that time maybe late 90s And uh of course
+LHC was really planned; I think also ROOT started 
+around that time maybe late 90s. And of course
 
 0:01:13.440,0:01:20.720
 the example that we're most proud of that we 
-show every time is uh um the analysis that led
+show every time is the analysis that led
 
 0:01:20.720,0:01:26.400
-to the Hicks discovery in 2012 they were already 
-done using root So for the root was used for the
+to the Hicks discovery in 2012. They were already 
+done using ROOT. So ROOT was used for the
 
 0:01:26.400,0:01:32.640
-plotting um the statistical analysis and of course 
+plotting, the statistical analysis and, of course, 
 also for storing the data and and processing the
 
 0:01:32.640,0:01:42.960
-data So I think this is quite familiar to you 
+data. So I think this is quite familiar to you 
 maybe I who has seen this plot already Okay Yeah
 
 0:01:42.960,0:01:49.200
@@ -60,7 +60,7 @@ and and signal strength in both dioton and for
 
 0:02:06.720,0:02:13.920
 leptton channels by atlas So um yeah I mentioned 
-that there are several things that root can do
+that there are several things that ROOT can do
 
 0:02:13.920,0:02:20.400
 like plotting histograms here on this slide I 
@@ -71,8 +71,8 @@ not everything is relevant for today Today we will 
 mostly focus really on the basics that you need to
 
 0:02:26.800,0:02:33.120
-get started doing some analysis in with root right 
-So let's say your supervisor gives you a root file
+get started doing some analysis in with ROOT right 
+So let's say your supervisor gives you a ROOT file
 
 0:02:33.120,0:02:39.760
 with some end to so some data set that he wants 
@@ -80,7 +80,7 @@ you to analyze by the end of today the goal is
 
 0:02:39.760,0:02:46.800
 that you are able to do this with the cutting edge 
-classes of root But in case you wonder what root
+classes of ROOT But in case you wonder what ROOT
 
 0:02:46.800,0:02:53.840
 can do besides um like the final analysis steps 
@@ -91,11 +91,11 @@ are proud of in particular is uh for example 
 the C++ inter interpreter is quite powerful
 
 0:03:00.480,0:03:07.760
-So root started as um um is actually not a Python 
+So ROOT started as um um is actually not a Python 
 library So it's a C++ library All of these parts
 
 0:03:07.760,0:03:15.120
-of root are implemented in C++ for performance 
+of ROOT are implemented in C++ for performance 
 reasons And um all of this C++ interpretation
 
 0:03:15.120,0:03:21.920
@@ -120,7 +120,7 @@ declaring your analysis and running it efficiently
 
 0:03:48.960,0:03:57.600
 and um so I was mentioning there's a lot of data 
-stored in root files Yeah So root is is used to
+stored in ROOT files Yeah So ROOT is is used to
 
 0:03:57.600,0:04:03.520
 store data like the one the data that was recorded 
@@ -131,7 +131,7 @@ actually the impressive thing about roots data 
 storage system is that you can dump arbitrary
 
 0:04:10.320,0:04:17.680
-C++ classes in a root file and store whatever you 
+C++ classes in a ROOT file and store whatever you 
 want like this And the experiments at the LHC they
 
 0:04:17.680,0:04:25.120
@@ -151,7 +151,7 @@ particles that the detector measures they save 
 like a list of um of laptons jets etc again back
 
 0:04:44.960,0:04:53.440
-in a in a new root file And then so there are 
+in a in a new ROOT file And then so there are 
 between one and n further reduction steps But
 
 0:04:53.440,0:05:00.400
@@ -171,7 +171,7 @@ else that we show today is really targeted 
 towards this um uh final step of the analysis
 
 0:05:20.800,0:05:27.200
-where you have your uh root files with some 
+where you have your uh ROOT files with some 
 tabular data and then you make plots out of it
 
 0:05:27.760,0:05:36.560
@@ -191,7 +191,7 @@ figure out what are the ones that might match 
 the data best Then we talk about how you read
 
 0:05:52.720,0:06:00.640
-data from from root files and then how you do a 
+data from from ROOT files and then how you do a 
 more complicated analysis with our data frame and
 
 0:06:00.640,0:06:15.280
@@ -231,20 +231,20 @@ this time uh from no it's not the hick discovery 
 analysis it's later yeah you see this here square
 
 0:07:12.560,0:07:20.320
-root of s3 TV so this is from the LHC uh run two 
+ROOT of s3 TV so this is from the LHC uh run two 
 but nevertheless same kind of analysis so the
 
 0:07:20.320,0:07:29.520
 hicks decaying into four laptops and um all the 
-histogram programs in root are represented by a
+histogram programs in ROOT are represented by a
 
 0:07:29.520,0:07:36.000
 C++ class or to you it looks like a Python class 
-when you are using root from Python and the name
+when you are using ROOT from Python and the name
 
 0:07:36.000,0:07:43.440
-of these classes always starts with a t that's 
-that's our convention in root then you have h for
+of these classes always starts with a T that's 
+that's our convention in ROOT then you have h for
 
 0:07:43.440,0:07:51.680
 histogram then you have the number of dimensions 
@@ -267,15 +267,15 @@ observables So um now we actually run some code
 
 0:08:21.760,0:08:27.520
 So let's see how you would create a histogram in 
-root and fill it with some toy data So first you
+ROOT and fill it with some toy data So first you
 
 0:08:27.520,0:08:34.560
-need to import root Is it maybe I can zoom in a 
+need to import ROOT Is it maybe I can zoom in a 
 little bit Can everyone read it also in the back
 
 0:08:34.560,0:08:42.640
 is it large enough okay Nice Thanks So uh let's 
-let's import root and create our first histogram
+let's import ROOT and create our first histogram
 
 0:08:42.640,0:08:50.480
 So I will go uh through this constructor call 
@@ -283,11 +283,11 @@ here um a little bit in in detail but then
 
 0:08:50.480,0:08:56.000
 afterwards the pattern is always the same Yeah 
-Many root objects uh in their constructor they
+Many ROOT objects uh in their constructor they
 
 0:08:56.000,0:09:02.480
 accept first the name of the object that should 
-be unique because root is using this internally to
+be unique because ROOT is using this internally to
 
 0:09:02.480,0:09:09.360
 um identify the object Then you have a title 
@@ -315,11 +315,11 @@ TH1 object you can go to our reference guide but
 
 0:09:54.240,0:10:02.560
 usually you can also reach the same page by just 
-googling TH1 uh root or sometimes it helps to say
+googling TH1 uh ROOT or sometimes it helps to say
 
 0:10:02.560,0:10:08.560
-CERN root because root is quite ambiguous So if 
-you Google th1 str root you would probably land on
+CERN ROOT because ROOT is quite ambiguous So if 
+you Google th1 str ROOT you would probably land on
 
 0:10:08.560,0:10:15.600
 the same page So um how do you draw a histogram 
@@ -330,8 +330,8 @@ object that lives in on the computer but we can't 
 really see it So um to draw anything we are using
 
 0:10:25.120,0:10:33.520
-here this um JavaScript root back end So this is 
-a um an implementation of um of root plotting in
+here this um JavaScript ROOT back end So this is 
+a um an implementation of um of ROOT plotting in
 
 0:10:33.520,0:10:38.960
 JavaScript So that means it runs natively on the 
@@ -339,19 +339,19 @@ browser and then you can also interact with your
 
 0:10:38.960,0:10:45.040
 plots So this is what we recommend you to use 
-when you are plotting your root histograms in
+when you are plotting your ROOT histograms in
 
 0:10:45.040,0:10:50.560
 the browser from a Jupyter notebook you enable 
 our JavaScript plotting back end with this
 
 0:10:50.560,0:10:59.600
-um magic command JS root and then set it to on 
+um magic command JS ROOT and then set it to on 
 and uh and drawing always follows the same pattern
 
 0:10:59.600,0:11:10.400
 First you create a canvas uh that you draw on So 
-this is of type t canvas and um then you draw the
+this is of type `TCanvas` and um then you draw the
 
 0:11:10.400,0:11:17.680
 object on the canvas with this object.draw method 
@@ -362,7 +362,7 @@ finally you draw the canvas and that's it So this 
 will always be the same thing also later on for
 
 0:11:24.080,0:11:32.640
-um for graphs or other objects in root So let's 
+um for graphs or other objects in ROOT So let's 
 do it and then you have a nice visualization of
 
 0:11:32.640,0:11:39.920
@@ -386,7 +386,7 @@ simple feature but it's quite useful to quickly 
 know how many counts you have in a given bin
 
 0:12:04.080,0:12:12.240
-um root functions So um I already mentioned it 
+um ROOT functions So um I already mentioned it 
 before So we often compare hypothesis with data
 
 0:12:12.240,0:12:19.120
@@ -395,7 +395,7 @@ represented in sort kind of probability density
 
 0:12:19.120,0:12:26.320
 function for example So we need a way to represent 
-functions as well in in the root world and
+functions as well in in the ROOT world and
 
 0:12:26.320,0:12:33.440
 um we do this with yet another class So this 
@@ -446,7 +446,7 @@ look different So um in this case we get here 
 this surface plot that we can again interact with
 
 0:13:55.040,0:14:03.360
-because it's JavaScript root So uh you can really 
+because it's JavaScript ROOT So uh you can really 
 look at this function from all angles Actually I'm
 
 0:14:03.360,0:14:09.120
@@ -471,7 +471,7 @@ complicated part of this presentation So so bear
 
 0:14:43.360,0:14:53.360
 with me here I use a slightly more advanced um 
-uh feature in root to define this TF1 object So
+uh feature in ROOT to define this TF1 object So
 
 0:14:53.360,0:14:59.760
 what I want to do now is um I want to define the 
@@ -483,19 +483,19 @@ Python but in C++ for performance reasons Then you
 
 0:15:06.960,0:15:15.280
 can um actually write C++ in a Jupyter notebook 
-with root by just prefixing the sale using this
+with ROOT by just prefixing the sale using this
 
 0:15:15.280,0:15:23.520
 percent CPP magic at the beginning of the cell 
 So all the content of the cell thereafter is
 
 0:15:23.520,0:15:30.560
-then sent to root's internal C++ interpreter 
+then sent to ROOT's internal C++ interpreter 
 and then you have uh this function available
 
 0:15:30.560,0:15:36.880
-in the root module as if it would have been 
-part of root itself So this quite powerful and
+in the ROOT module as if it would have been 
+part of ROOT itself So this quite powerful and
 
 0:15:36.880,0:15:45.360
 uh it really allows you to to benefit from the 
@@ -563,7 +563,7 @@ that the language inherited from from
 
 0:17:38.640,0:17:52.080
 C and um now we can use it as if it would be part 
-of the root module So we use it thish in this case
+of the ROOT module So we use it thish in this case
 
 0:17:52.080,0:18:00.080
 to instantiate this TF1 function object Um because 
@@ -578,15 +578,15 @@ constructor argument Um this time we're passing 
 it passing the a C++ function that is basically
 
 0:18:15.440,0:18:24.400
-wrapped by this root function object So let's do 
+wrapped by this ROOT function object So let's do 
 this And we get our own C++ function here from
 
 0:18:24.400,0:18:31.040
-the root module So everything that we declared to 
-the root interpreter with this percent CP magic
+the ROOT module So everything that we declared to 
+the ROOT interpreter with this percent CP magic
 
 0:18:31.040,0:18:40.080
-you can then get it from the uh from root like 
+you can then get it from the uh from ROOT like 
 that So we have now defined this fit function and
 
 0:18:40.080,0:18:50.960
@@ -699,7 +699,7 @@ to define the this gshian TF1 but I mean since
 
 0:22:01.280,0:22:08.080
 gshian distribution is so common in data analysis 
-there's also builtin function in root it's called
+there's also builtin function in ROOT it's called
 
 0:22:08.080,0:22:13.680
 gaus and then you can just fit your histogram to 
@@ -711,7 +711,7 @@ random numbers So um you can think of it uh like
 
 0:22:22.560,0:22:29.120
 there are some TF1 objects that always live in in 
-the root module no matter if you created them or
+the ROOT module no matter if you created them or
 
 0:22:29.120,0:22:36.560
 not and you can reference them by um using these 
@@ -778,7 +778,7 @@ a very efficient way so that the minimizer can 
 evaluate it very very often And um we have a
 
 0:24:17.120,0:24:24.080
-library inside root that you can use to implement 
+library inside ROOT that you can use to implement 
 these very efficient probability density functions
 
 0:24:24.080,0:24:29.760
@@ -790,7 +790,7 @@ any of the big LHC experiments in in your time 
 as a summer student Okay we can also visualize
 
 0:24:37.920,0:24:44.160
-graphs in root not surprisingly and this is quite 
+graphs in ROOT not surprisingly and this is quite 
 a common thing to do So just a set of points on
 
 0:24:44.160,0:24:50.880
@@ -835,7 +835,7 @@ these um um points on the parabola that we were
 
 0:25:59.520,0:26:06.480
 filling the graph with And um again since it's 
-JavaScript root you can hover over the points
+JavaScript ROOT you can hover over the points
 
 0:26:06.480,0:26:13.040
 and see their x and y values So just to show 
@@ -855,7 +855,7 @@ behavior anyway And then um and then the B stands
 
 0:26:34.800,0:26:42.320
 for bar plot and again one is just the first kind 
-of bar plot style that root has built in And then
+of bar plot style that ROOT has built in And then
 
 0:26:42.320,0:26:50.400
 you have a bar plot instead of a regular u um 
@@ -1107,7 +1107,7 @@ you don't need to uh do this complicated
 
 0:34:25.520,0:34:34.240
 error propagation yourself So um that's why 
-if you then create this t efficiency here with
+if you then create this `TEfficiency` here with
 
 0:34:34.240,0:34:41.520
 um from the passing and failing histogram and 
@@ -1166,7 +1166,7 @@ like in this example with the custom gshion from 
 the from the lecture So you pass here the the C++
 
 0:36:22.960,0:36:32.160
-function via the root module Then you give the 
+function via the ROOT module Then you give the 
 minimum of X and Y sorry of just of X and the
 
 0:36:32.160,0:36:36.880
@@ -1215,25 +1215,25 @@ you might either find this in the documentation
 
 0:37:58.320,0:38:03.840
 for drawing histograms or just if you Google CERN 
-root how to draw arrow bars it will probably show
+ROOT how to draw arrow bars it will probably show
 
 0:38:03.840,0:38:10.800
 you Oh and that's a general advice ROOT is not 
 the most googleable name for a software framework
 
 0:38:10.800,0:38:21.680
-because root might also mean other things with 
+because ROOT might also mean other things with 
 computers the super user or just the tree Um so
 
 0:38:21.680,0:38:35.420
 if you Google for something ROOT related it's 
-good to ask for CERN root So that's the advice
+good to ask for CERN ROOT So that's the advice
 
 0:38:35.420,0:38:35.440
 [Music] 2. ROOT File
 
 0:38:35.440,0:38:39.600
-The root files are really what's at the core 
+The ROOT files are really what's at the core 
 of of doing an analysis because this is where
 
 0:38:39.600,0:38:45.280
@@ -1242,11 +1242,11 @@ you read your data or the results of your analysis
 
 0:38:45.280,0:38:52.800
 uh back to be able to reuse or to reinpret. The 
-cool thing about these root files is really that
+cool thing about these ROOT files is really that
 
 0:38:52.800,0:39:00.640
 you can write any object uh to the files Um so 
-the the a root file we refer to it as a TFile,
+the the a ROOT file we refer to it as a TFile,
 
 0:39:00.640,0:39:04.080
 so again the `T` at the beginning;
@@ -1286,11 +1286,11 @@ see that there are maybe subdirectories and files
 
 0:39:46.880,0:39:51.920
 ROOT files kind of have the same feeling where you 
-can have directories inside the root files or um
+can have directories inside the ROOT files or um
 
 0:39:51.920,0:39:59.280
 or objects um that are yeah kind of hierarchical 
-how to use and how to interact with a root file
+how to use and how to interact with a ROOT file
 
 0:39:59.280,0:40:05.200
 Um let's start with just importing ROOT as usual 
@@ -1298,10 +1298,10 @@ Uh this is always how we start Um let's wait for
 
 0:40:05.200,0:40:12.480
 it to finish importing There we are And now the 
-T file So in this situation we want to create a
+`TFile` So in this situation we want to create a
 
 0:40:12.480,0:40:19.040
-T file from scratch So we don't have any data yet 
+`TFile` from scratch So we don't have any data yet 
 but we want to write some results to to a new file
 
 0:40:19.040,0:40:28.000
@@ -1309,24 +1309,24 @@ or um well see how it works So to create a T file 
 um kind of similar to what you saw with uh TF1 and
 
 0:40:28.000,0:40:35.280
-uh and all kinds of of uh root functions really 
-you just create a file by calling root t file
+uh and all kinds of of uh ROOT functions really 
+you just create a file by calling ROOT t file
 
 0:40:35.280,0:40:41.360
 and it takes two two arguments The first one 
 is actually the name of your file Um and the
 
 0:40:41.360,0:40:47.760
-extension we use is root So anytime you find a 
-file that has root you know or you can be fairly
+extension we use is ROOT So anytime you find a 
+file that has ROOT you know or you can be fairly
 
 0:40:47.760,0:40:54.000
-certain that it's a root file And then the second 
+certain that it's a ROOT file And then the second 
 parameter is kind of the mode or the option you
 
 0:40:54.000,0:41:01.200
-give to to the T file um constructor and it kind 
-of basically tells uh root or the T file creator
+give to to the `TFile` um constructor and it kind 
+of basically tells uh ROOT or the `TFile` creator
 
 0:41:01.200,0:41:05.200
 what you want to do with the file and it kind of 
@@ -1334,7 +1334,7 @@ describes the policies on how you want to handle
 
 0:41:05.200,0:41:11.840
 the file So in this case I I said recreate which 
-means that I tell root that okay even if the file
+means that I tell ROOT that okay even if the file
 
 0:41:11.840,0:41:17.200
 already exists uh I don't care what's in it just 
@@ -1381,7 +1381,7 @@ then you have like the file name whatever Yeah I 
 see a couple of hands Good Uh we can do exactly
 
 0:42:16.240,0:42:22.320
-the same thing here So we have with root t file 
+the same thing here So we have with ROOT t file 
 and then exactly the same constructor as my my
 
 0:42:22.320,0:42:27.360
@@ -1458,7 +1458,7 @@ histo Um so that's maybe a good thing to note Okay
 
 0:44:23.040,0:44:29.280
 So now we should have a file or we already saw 
-that we have a file called my file.root Um but we
+that we have a file called my file.ROOT Um but we
 
 0:44:29.280,0:44:36.400
 want to check uh whether actually it contains the 
@@ -1469,7 +1469,7 @@ try with bash Um I'm sure I hope that everyone's 
 familiar with the ls command And we can see indeed
 
 0:44:42.880,0:44:47.920
-that there is a file called my file.root It's 
+that there is a file called my file.ROOT It's 
 also larger than what we saw before Has more
 
 0:44:47.920,0:44:55.680
@@ -1481,19 +1481,19 @@ to actually check if it contains the histogram 
 we just created we also provide a special command
 
 0:45:01.600,0:45:07.360
-called uh root ls that will actually show you 
-the commands within a root file So if you have a
+called uh ROOT ls that will actually show you 
+the commands within a ROOT file So if you have a
 
 0:45:07.360,0:45:13.680
-root file and you only know the file name but you 
+ROOT file and you only know the file name but you 
 aren't really sure what's in there Um you can use
 
 0:45:13.680,0:45:21.520
-root ls to to inspect actually the contents of the 
+ROOT ls to to inspect actually the contents of the 
 of the file So to see it in action Yeah exactly So
 
 0:45:21.520,0:45:29.040
-we call root ls with uh exactly the same command 
+we call ROOT ls with uh exactly the same command 
 uh -l with uh the file name and it shows you that
 
 0:45:29.040,0:45:36.080
@@ -1514,7 +1514,7 @@ uh fill it or maybe plot it or I don't know you
 
 0:45:52.800,0:45:59.600
 want to programmatically interact with it Um we 
-can do it again by using T file So now we open
+can do it again by using `TFile` So now we open
 
 0:45:59.600,0:46:04.560
 uh again with the context manager we open the file 
@@ -1609,15 +1609,15 @@ uh a high performance excel sheet so you have 
 really this tabular view on your data and this
 
 0:48:39.040,0:48:44.640
-data set we call it t tree or it's the name of 
+data set we call it `TTree` or it's the name of 
 the of the class we uh we use it again so it's
 
 0:48:44.640,0:48:50.880
-a tree with the t in front of it Um and it 
-can be written to a T file just as any other
+a tree with the `T` in front of it Um and it 
+can be written to a `TFile` just as any other
 
 0:48:50.880,0:49:00.240
-um C++ object or root object as we just saw Um and 
+um C++ object or ROOT object as we just saw Um and 
 the nice thing about this format is that you can
 
 0:49:00.240,0:49:07.680
@@ -1642,7 +1642,7 @@ show you what a T3 looks like We again used the so
 
 0:49:30.400,0:49:36.640
 now this example file already existed You can find 
-it in the repository as well If we call root ls on
+it in the repository as well If we call ROOT ls on
 
 0:49:36.640,0:49:42.480
 this example file you'll see that we will have a 
@@ -1664,7 +1664,7 @@ data frame and here is also where I kind of will 
 contradict what what J said in the beginning that
 
 0:50:08.880,0:50:13.920
-every root class is prepended with a t This is 
+every ROOT class is prepended with a t This is 
 actually not fully true because the modern classes
 
 0:50:13.920,0:50:20.240
@@ -1696,11 +1696,11 @@ under the hood our data frame takes care of making 
 sure that everything is optimized and runs as fast
 
 0:50:55.920,0:51:01.440
-as it uh can run So with root our data frame you 
+as it uh can run So with ROOT our data frame you 
 can provide different sources you can actually
 
 0:51:01.440,0:51:05.840
-you don't only need to read from from root files 
+you don't only need to read from from ROOT files 
 it's the most common way but you can actually also
 
 0:51:05.840,0:51:12.160
@@ -1713,7 +1713,7 @@ it could be a definition of a new column Um it
 
 0:51:18.880,0:51:24.560
 could be anything And then you output it to a 
-histogram your new root files that you can use
+histogram your new ROOT files that you can use
 
 0:51:24.560,0:51:31.680
 then perform your fits or yeah really any any user 
@@ -1728,7 +1728,7 @@ also writing uh trees And really our goal is to 
 make life easy for you So how it works in action
 
 0:51:43.440,0:51:49.200
-um as with the other root interfaces what you do 
+um as with the other ROOT interfaces what you do 
 to open is you need the name of your tree or the
 
 0:51:49.200,0:51:54.960
@@ -1740,7 +1740,7 @@ to on your local machine It can also be a URL to 
 to a file that's hosted somewhere else And then
 
 0:51:59.440,0:52:04.240
-to create our data frame simply we call root dot 
+to create our data frame simply we call ROOT dot 
 our dataf frame with the name of the data set and
 
 0:52:04.240,0:52:12.720
@@ -1748,7 +1748,7 @@ the path to the data set And pretty much that's it 
 So to see it in action um again we have to import
 
 0:52:12.720,0:52:20.880
-root and we open it and yeah exactly So we open we 
+ROOT and we open it and yeah exactly So we open we 
 have the data frame and you can see that we have
 
 0:52:20.880,0:52:28.800
@@ -1836,7 +1836,7 @@ you to streamline the creation of histograms and 
 graphs and um any way to to show your results So
 
 0:54:41.760,0:54:47.200
-for example and again we used JS root again it 
+for example and again we used JS ROOT again it 
 looks very similar to to what you already saw
 
 0:54:47.200,0:54:52.240
@@ -2136,7 +2136,7 @@ second part that was maybe slightly more tricky 
 is to define this logarithm of a And here we're
 
 1:02:23.280,1:02:33.600
-using the the root tmath class which gives you 
+using the the ROOT tmath class which gives you 
 the log a So this is the second step And then
 
 1:02:33.600,1:02:41.040
@@ -2145,10 +2145,10 @@ distribution of this new column that we called log
 
 1:02:41.040,1:02:53.120
 a we should get the normal distribution And now we 
-can just use the JS root command Now we can just
+can just use the JS ROOT command Now we can just
 
 1:02:53.120,1:03:00.480
-um do the drawing So the root t canvas and 
+um do the drawing So the ROOT t canvas and 
 we draw the histograms and then we draw the
 
 1:03:00.480,1:03:16.960
@@ -2180,12 +2180,12 @@ in our data frame you have certain specificities 
 For example you will you will see here and there
 
 1:03:55.600,1:04:02.640
-um something that is called root arc uh popping 
+um something that is called ROOT arc uh popping 
 up This is just the in-memory representation of
 
 1:04:02.640,1:04:09.520
 a vector a vector of uh particle properties 
-uh that we have in root So nothing nothing
+uh that we have in ROOT So nothing nothing
 
 1:04:09.520,1:04:14.080
 um weird about it It's just our own way of 
@@ -2281,11 +2281,11 @@ are the columns of our data set And then we are
 
 1:06:49.760,1:06:57.520
 doing some manipulation here From left to right we 
-have an external call to a square root operation
+have an external call to a square ROOT operation
 
 1:06:57.520,1:07:03.360
 with an argument And then right after the square 
-root operation we have this brackets with square
+ROOT operation we have this brackets with square
 
 1:07:03.360,1:07:12.640
 brackets um syntax Now the the square bracket 
@@ -2317,10 +2317,10 @@ each element from the from the array E Right
 
 1:07:57.680,1:08:03.920
 and this is how then the outer array So the 
-result of the square root will be masked So
+result of the square ROOT will be masked So
 
 1:08:03.920,1:08:09.760
-whatever comes out of the square root operation on 
+whatever comes out of the square ROOT operation on 
 the left will be another array But then we select
 
 1:08:09.760,1:08:15.360
@@ -2329,7 +2329,7 @@ selection criterion E greater than greater than
 
 1:08:15.360,1:08:24.240
 100 And okay so now we can then go to the square 
-root operations In particular the parameters here
+ROOT operations In particular the parameters here
 
 1:08:24.240,1:08:29.360
 as I said before they are collections So we are 
@@ -2344,7 +2344,7 @@ performing some manipulations here we are uh 
 multiplying them we are summing them and then
 
 1:08:39.440,1:08:43.840
-there's their square root the important bit 
+there's their square ROOT the important bit 
 to remember here is that the dimensionality
 
 1:08:43.840,1:08:50.880
@@ -2364,12 +2364,12 @@ them will be still a size three vector with the 
 elements uh summed element by element And then
 
 1:09:11.920,1:09:18.000
-the square root same thing So in general we are 
+the square ROOT same thing So in general we are 
 preserving the dimensionality of the input arrays
 
 1:09:18.000,1:09:23.920
 Um and then finally the whole expression 
-is give me the square root of the of the
+is give me the square ROOT of the of the
 
 1:09:23.920,1:09:30.480
 um uh square of the sum of squares of the two 
@@ -2441,18 +2441,18 @@ processing uh array data with with our data
 
 1:11:26.320,1:11:36.560
 frame Okay So the question is um here in this 
-particular example we are using the square root
+particular example we are using the square ROOT
 
 1:11:36.560,1:11:42.080
 function and why don't we need to prefix any 
-name space to the square root function Well in
+name space to the square ROOT function Well in
 
 1:11:42.080,1:11:48.080
-this case the square root function comes from the 
+this case the square ROOT function comes from the 
 standard C++ name space So this is stood square
 
 1:11:48.080,1:11:55.680
-uh square root The way the the C++ programming 
+uh square ROOT The way the the C++ programming 
 language works is if the function arguments in
 
 1:11:55.680,1:12:02.320
@@ -2460,8 +2460,8 @@ this case px py these are these are of type 
 arebec If the function arguments match with
 
 1:12:02.320,1:12:10.560
-the signature of the square root function that 
-has that type so root artbec then um the the the
+the signature of the square ROOT function that 
+has that type so ROOT artbec then um the the the
 
 1:12:10.560,1:12:16.800
 compiler the program will execute the correct 
@@ -2472,20 +2472,20 @@ write the the name space and in this case it's 
 not ambiguous because there is not another uh
 
 1:12:22.560,1:12:28.160
-square root function at the global namespace 
+square ROOT function at the global namespace 
 let's say so the the compiler knows what to do
 
 1:12:28.160,1:12:34.720
 um and this in particular is also different 
-from the t-math colon square root function So
+from the t-math colon square ROOT function So
 
 1:12:34.720,1:12:41.040
 um there's no ambiguity there You could use 
 of course Yeah Here instead you can you can
 
 1:12:41.040,1:12:47.760
-give tmath square root or you can define 
-your own square root function and use that
+give tmath square ROOT or you can define 
+your own square ROOT function and use that
 
 1:12:47.760,1:12:54.240
 The only the only requirement is that it can be 
@@ -2544,7 +2544,7 @@ this data set Let's uh quickly open our data frame 
 object So we have the data set from uh example
 
 1:14:41.040,1:14:51.520
-style.root Um and then we have we're interested 
+style.ROOT Um and then we have we're interested 
 in columns ve one and ve two We have to do this
 
 1:14:51.520,1:14:56.720
@@ -2640,7 +2640,7 @@ processing it You remember from the slides that
 
 1:17:59.760,1:18:04.560
 Florina was discussing that we have this concept 
-of the root file So the T file and that we can
+of the ROOT file So the `TFile` and that we can
 
 1:18:04.560,1:18:11.120
 store anything in it and this includes also root 
@@ -2656,7 +2656,7 @@ there's one simple function that you can call It's
 
 1:18:25.600,1:18:35.200
 called snapshot and it will store a T3 properly 
-formatted into a T file given the uh parameters
+formatted into a `TFile` given the uh parameters
 
 1:18:35.200,1:18:39.920
 that you pass to the function So you can see it in 
@@ -2823,7 +2823,7 @@ far
 
 1:23:09.760,1:23:21.680
 Okay All right Clearly we have already seen in 
-previous uh in previous notebooks that root is
+previous uh in previous notebooks that ROOT is
 
 1:23:21.680,1:23:28.480
 this package that lets you use Python and C++ 
@@ -2863,7 +2863,7 @@ You can also use them with the other syntax that
 
 1:24:24.720,1:24:29.920
 we showed before that they become part of the 
-root module So you have root dot function that
+ROOT module So you have ROOT dot function that
 
 1:24:29.920,1:24:38.480
 you just defined Um and uh and this is how it's 
@@ -2895,7 +2895,7 @@ user side of the framework is written in Python
 
 1:25:20.880,1:25:28.480
 And finally as a as a final mention uh our data 
-frame and clearly root in general is a very
+frame and clearly ROOT in general is a very
 
 1:25:28.480,1:25:37.920
 performanceoriented software in particular all the 
@@ -2935,7 +2935,7 @@ one column takes some time And then in the
 
 1:26:29.920,1:26:38.720
 next cell I will do the same but pay attention 
-to this first line You call root enable implicit
+to this first line You call ROOT enable implicit
 
 1:26:38.720,1:26:45.760
 MT and then everything else will run using the 
@@ -3051,7 +3051,7 @@ mass In this case because there is already a very
 
 1:30:03.040,1:30:10.320
 simple function ready made for you and available 
-in in root we we just wrote it already for you So
+in in ROOT we we just wrote it already for you So
 
 1:30:10.320,1:30:18.720
 you don't have to care about that But the filters 
@@ -3239,7 +3239,7 @@ of going on with the exercise Good Um okay This
 
 1:36:28.240,1:36:33.600
 is the other part of the analysis but in this 
-case root already offers a nice invariant mass
+case ROOT already offers a nice invariant mass
 
 1:36:33.600,1:36:41.040
 function So you don't have to um code it yourself 
