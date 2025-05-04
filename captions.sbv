@@ -4,7 +4,7 @@ always important to emphasize that it's
 
 0:00:23.600,0:00:30.080
 an open-source project by the high energy physics 
-community for the community Here the developers
+community for the community. Here the developers
 
 0:00:30.080,0:00:37.120
 are right at CERN or at our partner institute and 
@@ -1493,59 +1493,59 @@ ROOT ls to to inspect actually the contents of the 
 of the file So to see it in action Yeah exactly So
 
 0:45:21.520,0:45:29.040
-we call ROOT ls with exactly the same command 
+we call rootls with exactly the same command 
 uh -l with the file name and it shows you that
 
 0:45:29.040,0:45:36.080
-uh we have a th1D written on 14th of 
-June with a histogram called my histo
+uh we have a TH1D written on 14th of 
+June with a histogram called my_histo
 
 0:45:36.080,0:45:41.280
 and actually it also contains the type Now this 
-is all fine You have the file you know how to
+is all fine You have the file, you know how to
 
 0:45:41.280,0:45:46.400
-show it in bash but of course you also want to 
-be able to interact with it because you create
+show it in bash, but of course you also want to 
+be able to interact with it. because you create
 
 0:45:46.400,0:45:52.800
-histogram you write it out but then you want to 
-uh fill it or maybe plot it or I don't know you
+histogram, you write it out, but then you want to 
+uh fill it, or maybe plot it, or I don't know you
 
 0:45:52.800,0:45:59.600
-want to programmatically interact with it we 
+want to programmatically interact with it. we 
 can do it again by using 'TFile' So now we open
 
 0:45:59.600,0:46:04.560
-uh again with the context manager we open the file 
-Notice that I don't give a don't give an argument
+uh again with the context manager, we open the file, 
+Notice that I don't give an argument
 
 0:46:04.560,0:46:08.800
-right now because I don't want to recreate I don't 
-want to update I just want to read which will
+right now, because I don't want to recreate, I don't 
+want to update, I just want to read; which will
 
 0:46:08.800,0:46:15.040
-be the default And then I can on the on the file 
-object I can call get with again the name of
+be the default. And then I can, on the file 
+object, I can call 'get' with again the name of
 
 0:46:15.040,0:46:22.000
-the histogram we just created So let's see what it 
-does exactly So now we open the file we get it and
+the histogram we just created. So let's see what it 
+does exactly. So now we open the file we get it and
 
 0:46:22.000,0:46:29.760
 um we can verify here that we have a histogram 
-called my histo which exactly what we created
+called my_histo which exactly what we created.
 
 0:46:29.760,0:46:37.920
-So that's files in general now let's move a 
-bit into what's usually in these files which
+So that's files in general, now let's move a 
+bit into what's usually in these files. which
 
 0:46:37.920,0:46:43.360
-are HEP data sets because I don't know what 
+are HEP data sets. because I don't know what 
 what what your background is just to make
 
 0:46:43.360,0:46:49.920
-sure we're on the same page A high energy physics 
+sure we're on the same page; A high energy physics 
 data set typically contains many many we're
 
 0:46:49.920,0:46:55.840
