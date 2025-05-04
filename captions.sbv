@@ -1661,7 +1661,7 @@ recommended way is nowadays roots are
 
 0:50:03.280,0:50:08.880
 data frame and here is also where I kind of will 
-contradict what what J said in the beginning that
+contradict what what Jonas said in the beginning that
 
 0:50:08.880,0:50:13.920
 every ROOT class is prepended with a T. This is 
@@ -1673,7 +1673,7 @@ with an R which also logically maybe makes more
 
 0:50:20.240,0:50:26.240
 sense So if you have the choice between using an 
-RInterface or a TInterface I would recommend
+R-interface or a T-interface I would recommend
 
 0:50:26.240,0:50:32.080
 using the interface that starts with an R because 
