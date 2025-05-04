@@ -346,12 +346,12 @@ the browser from a Jupyter notebook you enable 
 our JavaScript plotting back end with this
 
 0:10:50.560,0:10:59.600
-um magic command `%%jsroot` and then set it to on 
+um magic command '%%jsroot' and then set it to on 
 and and drawing always follows the same pattern
 
 0:10:59.600,0:11:10.400
 First you create a canvas that you draw on So 
-this is of type `TCanvas` and then you draw the
+this is of type 'TCanvas' and then you draw the
 
 0:11:10.400,0:11:17.680
 object on the canvas with this object.draw method 
@@ -1107,7 +1107,7 @@ you don't need to do this complicated
 
 0:34:25.520,0:34:34.240
 error propagation yourself So that's why 
-if you then create this `TEfficiency` here with
+if you then create this 'TEfficiency' here with
 
 0:34:34.240,0:34:41.520
 um from the passing and failing histogram and 
@@ -1249,7 +1249,7 @@ you can write any object to the files so 
 the the a ROOT file we refer to it as a TFile,
 
 0:39:00.640,0:39:04.080
-so again the `T` at the beginning;
+so again the 'T' at the beginning;
 and that's really the the kind of the
 
 0:39:04.080,0:39:09.920
@@ -1298,10 +1298,10 @@ Uh this is always how we start let's wait for
 
 0:40:05.200,0:40:12.480
 it to finish importing There we are And now the 
-`TFile` So in this situation we want to create a
+'TFile' So in this situation we want to create a
 
 0:40:12.480,0:40:19.040
-`TFile` from scratch So we don't have any data yet 
+'TFile' from scratch So we don't have any data yet 
 but we want to write some results to to a new file
 
 0:40:19.040,0:40:28.000
@@ -1325,8 +1325,8 @@ certain that it's a ROOT file And then the second 
 parameter is kind of the mode or the option you
 
 0:40:54.000,0:41:01.200
-give to to the `TFile` constructor and it kind 
-of basically tells ROOT or the `TFile` creator
+give to to the 'TFile' constructor and it kind 
+of basically tells ROOT or the 'TFile' creator
 
 0:41:01.200,0:41:05.200
 what you want to do with the file and it kind of 
@@ -1514,7 +1514,7 @@ uh fill it or maybe plot it or I don't know you
 
 0:45:52.800,0:45:59.600
 want to programmatically interact with it we 
-can do it again by using `TFile` So now we open
+can do it again by using 'TFile' So now we open
 
 0:45:59.600,0:46:04.560
 uh again with the context manager we open the file 
@@ -1541,7 +1541,7 @@ So that's files in general now let's move a 
 bit into what's usually in these files which
 
 0:46:37.920,0:46:43.360
-are H data sets because I don't know what 
+are HEP data sets because I don't know what 
 what what your background is just to make
 
 0:46:43.360,0:46:49.920
@@ -1609,12 +1609,12 @@ uh a high performance excel sheet so you have 
 really this tabular view on your data and this
 
 0:48:39.040,0:48:44.640
-data set we call it `TTree` or it's the name of 
+data set we call it 'TTree' or it's the name of 
 the of the class we we use it again so it's
 
 0:48:44.640,0:48:50.880
-a tree with the `T` in front of it and it 
-can be written to a `TFile` just as any other
+a tree with the 'T' in front of it and it 
+can be written to a 'TFile' just as any other
 
 0:48:50.880,0:49:00.240
 um C++ object or ROOT object as we just saw and 
@@ -2640,7 +2640,7 @@ processing it You remember from the slides that
 
 1:17:59.760,1:18:04.560
 Florina was discussing that we have this concept 
-of the ROOT file So the `TFile` and that we can
+of the ROOT file So the 'TFile' and that we can
 
 1:18:04.560,1:18:11.120
 store anything in it and this includes also root 
@@ -2656,7 +2656,7 @@ there's one simple function that you can call It's
 
 1:18:25.600,1:18:35.200
 called snapshot and it will store a T3 properly 
-formatted into a `TFile` given the parameters
+formatted into a 'TFile' given the parameters
 
 1:18:35.200,1:18:39.920
 that you pass to the function So you can see it in 
